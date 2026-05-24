@@ -161,9 +161,10 @@ export function Hero() {
             <Image
               src="/img/hero/house.8ed9b3db.webp"
               alt=""
-              fill
+              width={1400}
+              height={1245}
               priority
-              sizes="(max-width: 640px) 400px, (max-width: 1640px) 700px, 75vw"
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 80vw, 1100px"
             />
           </div>
 
@@ -172,9 +173,10 @@ export function Hero() {
               <Image
                 src="/img/hero/house.8ed9b3db.webp"
                 alt=""
-                fill
+                width={1400}
+                height={1245}
                 priority
-                sizes="(max-width: 640px) 400px, (max-width: 1640px) 700px, 75vw"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 80vw, 1100px"
               />
             </div>
           </div>

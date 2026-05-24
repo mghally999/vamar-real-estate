@@ -65,19 +65,34 @@
   }
 }
 
-/* house — used twice: bare instance + nested inside composite */
+/* house — used twice: bare instance + nested inside composite.
+   Anchored to bottom of .bg so it sits in the lower half. The reference's
+   170.8rem container with object-fit:contain rendered offscreen at our
+   viewport scale — replaced with vw-relative width + auto height. */
 .house {
   position: absolute;
-  top: 60vh;
-  left: 0; right: 0;
-  height: 33.4rem;
-  z-index: 1;
+  bottom: -8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 1100px;
+  height: auto;
+  z-index: 2;
   transform-origin: bottom center;
 }
 @media (min-width: 1024px) {
-  .house { height: 170.8rem; }
+  .house {
+    bottom: -12vh;
+    width: 75vw;
+    max-width: 1400px;
+  }
 }
-.house img { width: 100%; height: 100%; object-fit: contain; }
+.house img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 
 /* clouds — two asymmetric instances */
 .clouds { position: absolute; inset: 0; z-index: 2; }
