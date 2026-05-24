@@ -91,12 +91,6 @@ export function Hero() {
       const wordEls = h1?.querySelectorAll(".word");
 
       const intro = gsap.timeline({ paused: true });
-      intro.fromTo(
-        root.current,
-        { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.6 },
-        0
-      );
       if (wordEls && wordEls.length) {
         intro.fromTo(
           wordEls,
