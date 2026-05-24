@@ -1,26 +1,243 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
+/* Vamar brand palette (sourced from /Users/.../Vamar-main/app — root project identity). */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Default = LIGHT theme. <html data-theme="dark"> overrides below. */
+  --bg: #f5f4ef;
+  --bg-elev: #ffffff;
+  --ink: #272F36;
+  --ink-soft: rgba(39, 47, 54, 0.7);
+  --ink-faint: rgba(39, 47, 54, 0.35);
+  --accent: #37474F;
+  --pill: #272F36;
+  --pill-text: #ffffff;
+  --line: rgba(39, 47, 54, 0.12);
+  --radius-pill: 999px;
+
+  --font-display: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+
+  --t-hero: clamp(3.5rem, 9vw, 8.5rem);
+  --t-h1: clamp(2.5rem, 6vw, 5rem);
+  --t-h2: clamp(2rem, 4vw, 3.5rem);
+  --t-body: 1.0625rem;
+  --t-small: 0.875rem;
+}
+
+/* Logo (white-rendered SVG) needs inversion on the light theme so it reads dark
+   on the cream bg. Dark theme keeps it white. */
+html[data-theme="light"] .dark-invert {
+  filter: invert(1) brightness(0.45);
+}
+
+/* DARK theme — root-project Vamar identity (#272F36 slate body + white ink) */
+html[data-theme="dark"] {
+  --bg: #272F36;
+  --bg-elev: #2F3941;
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.72);
+  --ink-faint: rgba(255, 255, 255, 0.35);
+  --accent: #9AB3C2;
+  --pill: #ffffff;
+  --pill-text: #272F36;
+  --line: rgba(255, 255, 255, 0.14);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-pill: var(--pill);
+  --color-pill-text: var(--pill-text);
+  --font-sans: var(--font-display);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+[data-faint] {
+  color: var(--ink-soft);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.display-tight {
+  letter-spacing: -0.04em;
+}
+
+.h1 {
+  font-size: var(--t-h1);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.h2 {
+  font-size: var(--t-h2);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.chevron {
+  clip-path: polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%, 20% 50%);
+}
+
+.chevron-right {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 18% 50%);
+}
+
+.chevron-left {
+  clip-path: polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%);
+}
+
+.clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+}
+
+.pill {
+  background: var(--pill);
+  color: var(--pill-text);
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background 250ms ease;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  background: var(--accent);
+}
+
+.pill[data-variant="outline"] {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.pill[data-variant="outline"]:hover {
+  background: var(--ink);
+  color: var(--pill-text);
+}
+
+.pill[data-variant="ghost"] {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.pill[data-variant="ghost"]:hover {
+  border-color: var(--ink);
+}
+
+/* Hard-dark pill — used by parity Hero on sunset sky regardless of UI theme */
+.pill[data-variant="dark"] {
+  background: #151717;
+  color: #ffffff;
+}
+.pill[data-variant="dark"]:hover {
+  background: #2a2c2c;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}
+
+.container-x {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  max-width: 1440px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.marquee-track {
+  display: flex;
+  will-change: transform;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--ink);
+  color: var(--pill-text);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  z-index: 100;
+  transition: top 200ms ease;
+}
+.skip-link:focus {
+  top: 1rem;
 }
