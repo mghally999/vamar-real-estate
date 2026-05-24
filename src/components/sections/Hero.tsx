@@ -187,7 +187,7 @@ export function Hero() {
               width={1400}
               height={1245}
               priority
-              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 80vw, 1100px"
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 900px"
             />
           </div>
 
@@ -199,7 +199,7 @@ export function Hero() {
                 width={1400}
                 height={1245}
                 priority
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 80vw, 1100px"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 900px"
               />
             </div>
           </div>
@@ -211,7 +211,7 @@ export function Hero() {
                 alt=""
                 width={768}
                 height={326}
-                sizes="50vw"
+                sizes="40vw"
               />
             </div>
             <div ref={cloudR} className={styles.cloud}>
@@ -220,7 +220,7 @@ export function Hero() {
                 alt=""
                 width={768}
                 height={326}
-                sizes="50vw"
+                sizes="35vw"
               />
             </div>
           </div>

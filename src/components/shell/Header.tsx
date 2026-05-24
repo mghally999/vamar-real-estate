@@ -46,10 +46,10 @@ export function Header() {
         <Link
           href="/"
           className="flex items-center"
-          aria-label="FIND Real Estate — Home"
+          aria-label="Vamar Real Estate — Home"
         >
-          <span className="font-black tracking-tight text-2xl text-[var(--ink)]">
-            F<span className="inline-block -skew-x-12">I</span>ND
+          <span className="font-bold tracking-tight text-2xl sm:text-3xl text-[var(--ink)]">
+            Vamar<span className="text-[var(--ink-soft)]">.</span>
           </span>
         </Link>
 

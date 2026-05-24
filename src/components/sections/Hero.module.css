@@ -1,5 +1,6 @@
-/* Hero.module.css — rewritten for proper layered hero parity.
-   Replaces the original 1:1 reference port that didn't work in this layout. */
+/* Hero.module.css — Vamar Real Estate hero scene.
+   Layered SVG-style scroll-scrubbed composition: sky → house → wordmark composite
+   → smoke → clouds. Text+CTA always visible at scroll=0 over the bg. */
 
 .root {
   position: relative;
@@ -10,7 +11,9 @@
 @media (prefers-reduced-motion: no-preference) {
   .root { visibility: hidden; }
 }
-@media (min-width: 1024px) { .root { height: 500vh; } }
+@media (min-width: 1024px) {
+  .root { height: 500vh; }
+}
 .root:first-of-type { margin-top: -8.4rem; }
 @media (min-width: 1024px) {
   .root:first-of-type { margin-top: -9.8rem; }
@@ -28,7 +31,7 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(180deg, #cfe1f0 0%, #f4d4b6 70%, #f7d7b4 100%);
+  background: linear-gradient(180deg, #cfe1f0 0%, #f0d4b8 65%, #f5c89f 100%);
 }
 
 .back {
@@ -42,13 +45,14 @@
   object-position: center;
 }
 
+/* HOUSE — anchored bottom, sized so the lower 40% of viewport shows it. */
 .house {
   position: absolute;
-  bottom: -8vh;
   left: 50%;
+  bottom: -6vh;
   transform: translateX(-50%);
-  width: 90vw;
-  max-width: 1100px;
+  width: 60vw;
+  max-width: 56rem;
   height: auto;
   z-index: 2;
   transform-origin: bottom center;
@@ -56,9 +60,9 @@
 }
 @media (min-width: 1024px) {
   .house {
-    bottom: -12vh;
-    width: 75vw;
-    max-width: 1400px;
+    width: 50vw;
+    max-width: 72rem;
+    bottom: -8vh;
   }
 }
 .house img {
@@ -67,6 +71,7 @@
   display: block;
 }
 
+/* COMPOSITE — same house, masked to wordmark. Starts hidden, fades in via timeline. */
 .composite {
   position: absolute;
   inset: 0;
@@ -77,29 +82,47 @@
           mask-image: url('/img/hero/wordmark_mask_FIND.svg');
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
-  -webkit-mask-position: center 50%;
-          mask-position: center 50%;
+  -webkit-mask-position: center 55%;
+          mask-position: center 55%;
   -webkit-mask-size: 80vw auto;
           mask-size: 80vw auto;
 }
 @media (min-width: 1024px) {
   .composite {
-    -webkit-mask-size: 70vw auto;
-            mask-size: 70vw auto;
-    -webkit-mask-position: center 45%;
-            mask-position: center 45%;
+    -webkit-mask-size: 65vw auto;
+            mask-size: 65vw auto;
+    -webkit-mask-position: center 50%;
+            mask-position: center 50%;
   }
 }
 
+/* CLOUDS — top of viewport, partially offscreen at edges */
+.clouds { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.cloud { position: absolute; }
+.cloud:first-child {
+  top: 6vh; left: -10vw;
+  width: 45vw; height: auto;
+}
+.cloud:last-child {
+  top: 10vh; right: -10vw;
+  width: 40vw; height: auto;
+}
+@media (min-width: 1024px) {
+  .cloud:first-child { top: 4vh; left: -8vw; width: 38vw; }
+  .cloud:last-child  { top: 8vh; right: -8vw; width: 32vw; }
+}
+.cloud img { width: 100%; height: auto; display: block; }
+
+/* SMOKE — small atmospheric layer at the very bottom. NOT a half-viewport blanket. */
 .smoke {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   width: 100%;
-  height: 45rem;
+  height: 12rem;
   z-index: 4;
   pointer-events: none;
 }
-@media (min-width: 1024px) { .smoke { height: 38rem; } }
+@media (min-width: 1024px) { .smoke { height: 18rem; } }
 .top .smoke { transform: translateY(70%); }
 .smoke img {
   width: 100%; height: 100%;
@@ -107,42 +130,10 @@
   object-position: top center;
 }
 
-.clouds { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
-.cloud {
-  position: absolute;
-  z-index: 5;
-  width: 50vw;
-  max-width: 700px;
-  height: auto;
-}
-.cloud:first-child {
-  top: 8vh; left: -10vw;
-}
-.cloud:last-child {
-  top: 12vh; right: -10vw;
-}
-@media (min-width: 1024px) {
-  .cloud:first-child {
-    top: 6vh; left: -8vw;
-    width: 45vw;
-    max-width: 900px;
-  }
-  .cloud:last-child {
-    top: 4vh; right: -8vw;
-    width: 40vw;
-    max-width: 850px;
-  }
-}
-.cloud img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
+/* WORDMARK STROKE — on top of everything during the draw animation */
 .logo {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
   height: auto;
@@ -150,69 +141,60 @@
   opacity: 0;
   pointer-events: none;
 }
-@media (min-width: 1024px) {
-  .logo { width: 70vw; }
-}
+@media (min-width: 1024px) { .logo { width: 65vw; } }
 .logo svg { width: 100%; height: auto; overflow: visible; }
-.logo svg g { stroke-width: 3px; }
-.logo path {
-  fill: transparent;
-  stroke: #fff;
-  stroke-width: 3px;
-}
+.logo svg g { stroke: #fff; stroke-width: 3px; fill: transparent; }
 @media (min-width: 1024px) {
   .logo svg g { stroke-width: 2px; }
-  .logo path { stroke-width: 2px; }
 }
 
+/* OVERLAP wrapper for the bottom smoke + white fade */
 .overlap {
   position: absolute;
   top: 0; left: 0; right: 0;
   bottom: 100vh;
   pointer-events: none;
 }
-
 .overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 10rem;
+  height: 8rem;
   z-index: 6;
-  background: linear-gradient(180deg, rgba(255,255,255,0), #fff);
+  background: linear-gradient(180deg, rgba(255,255,255,0), #f5f4ef);
 }
-@media (min-width: 1024px) { .overlay { height: 18rem; } }
+@media (min-width: 1024px) { .overlay { height: 14rem; } }
 
+/* CONTENT — title + subhead + CTA. Always opacity:1 by default. */
 .content {
   position: relative;
   z-index: 10;
   display: grid;
   place-items: center;
   height: 100%;
-  padding: 0 2rem 12rem;
+  padding: 0 2rem;
   text-align: center;
-}
-@media (min-width: 1024px) {
-  .content { padding-bottom: 14vh; }
 }
 
 .title h1 {
-  font-weight: 700;
-  font-size: clamp(2.5rem, 9vw, 8rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  font-size: clamp(2.8rem, 9vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
   text-align: center;
   color: #151717;
   margin: 0;
+  text-wrap: balance;
+  max-width: 16ch;
 }
 
 .text {
-  margin: 1.5rem 0 0;
+  margin: 1.25rem 0 0;
   font-weight: 500;
-  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
   line-height: 1.5;
   text-align: center;
-  text-wrap: balance;
   color: #151717;
-  max-width: 50ch;
+  max-width: 52ch;
 }
 
 .em { color: rgba(21, 23, 23, 0.5); }
