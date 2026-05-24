@@ -78,8 +78,8 @@
   z-index: 3;
   opacity: 0;
   pointer-events: none;
-  -webkit-mask-image: url('/img/hero/wordmark_mask_FIND.svg');
-          mask-image: url('/img/hero/wordmark_mask_FIND.svg');
+  -webkit-mask-image: url('/img/hero/wordmark_mask_VAMAR.svg');
+          mask-image: url('/img/hero/wordmark_mask_VAMAR.svg');
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center 55%;
