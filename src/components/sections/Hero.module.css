@@ -9,9 +9,14 @@
 
 .root {
   position: relative;
-  height: 350vh;             /* mobile: 3.5x viewport tall */
-  margin-bottom: -100vh;     /* trailing -100vh pulls the next section underneath */
-  visibility: hidden;        /* intro autoAlpha tween reveals it (no first-paint flicker) */
+  height: 350vh;
+  margin-bottom: -100vh;
+  background: #f4d4b6;
+}
+/* Only hide if intro tween will run. Reduced-motion users skip the intro and
+   need the hero visible immediately. */
+@media (prefers-reduced-motion: no-preference) {
+  .root { visibility: hidden; }
 }
 @media (min-width: 1024px) {
   .root { height: 500vh; }
@@ -33,6 +38,7 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+  background: linear-gradient(180deg, #cfe1f0 0%, #f4d4b6 100%);
 }
 
 /* back plate = sunset sky */
