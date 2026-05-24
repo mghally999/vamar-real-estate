@@ -35,15 +35,6 @@ export function Hero() {
 
       registerGsap();
 
-      const paths = root.current.querySelectorAll<SVGPathElement>(
-        `.${styles.logo} svg path`
-      );
-      paths.forEach((p) => {
-        const len = p.getTotalLength();
-        p.style.strokeDasharray = String(len);
-        p.style.strokeDashoffset = String(len);
-      });
-
       const tl = gsap.timeline();
       tl.to(
         [houseBg.current, houseFg.current],
@@ -60,11 +51,6 @@ export function Hero() {
       );
       tl.to(content.current, { opacity: 0, duration: 0.2, ease: "none" }, 0);
       tl.to(logo.current, { opacity: 1, duration: 0.01 }, 0.1);
-      tl.to(
-        paths,
-        { strokeDashoffset: 0, duration: 0.3, ease: "none" },
-        0.1
-      );
       tl.to(logo.current, { opacity: 0, duration: 0.2, ease: "none" }, 0.28);
       tl.to(
         composite.current,

@@ -51,8 +51,8 @@
   left: 50%;
   bottom: -6vh;
   transform: translateX(-50%);
-  width: 60vw;
-  max-width: 56rem;
+  width: 50vw;
+  max-width: 50rem;
   height: auto;
   z-index: 2;
   transform-origin: bottom center;
@@ -60,8 +60,8 @@
 }
 @media (min-width: 1024px) {
   .house {
-    width: 50vw;
-    max-width: 72rem;
+    width: 42vw;
+    max-width: 64rem;
     bottom: -8vh;
   }
 }
@@ -167,24 +167,27 @@
 /* CONTENT — title + subhead + CTA. Always opacity:1 by default. */
 .content {
   position: relative;
-  z-index: 10;
+  z-index: 50;
   display: grid;
   place-items: center;
   height: 100%;
   padding: 0 2rem;
   text-align: center;
+  isolation: isolate;
+  pointer-events: auto;
 }
 
 .title h1 {
   font-weight: 800;
-  font-size: clamp(2.8rem, 9vw, 9rem);
-  line-height: 0.92;
+  font-size: clamp(2.4rem, 7.5vw, 7.5rem);
+  line-height: 0.95;
   letter-spacing: -0.04em;
   text-align: center;
   color: #151717;
   margin: 0;
   text-wrap: balance;
-  max-width: 16ch;
+  max-width: 92vw;
+  padding: 0 1rem;
 }
 
 .text {
