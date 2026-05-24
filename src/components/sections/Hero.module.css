@@ -45,14 +45,15 @@
   object-position: center;
 }
 
-/* HOUSE — anchored bottom, sized so the lower 40% of viewport shows it. */
+/* HOUSE — flush to bottom of sticky viewport. Only the top portion shows;
+   .top { overflow: hidden } clips anything extending past 100vh. */
 .house {
   position: absolute;
   left: 50%;
-  bottom: -6vh;
+  bottom: 0;
   transform: translateX(-50%);
-  width: 50vw;
-  max-width: 50rem;
+  width: 55vw;
+  max-width: 56rem;
   height: auto;
   z-index: 2;
   transform-origin: bottom center;
@@ -60,15 +61,16 @@
 }
 @media (min-width: 1024px) {
   .house {
-    width: 42vw;
-    max-width: 64rem;
-    bottom: -8vh;
+    width: 46vw;
+    max-width: 68rem;
+    bottom: 0;
   }
 }
 .house img {
   width: 100%;
   height: auto;
   display: block;
+  vertical-align: bottom;
 }
 
 /* COMPOSITE — same house, masked to wordmark. Starts hidden, fades in via timeline. */
@@ -164,17 +166,24 @@
 }
 @media (min-width: 1024px) { .overlay { height: 14rem; } }
 
-/* CONTENT — title + subhead + CTA. Always opacity:1 by default. */
+/* CONTENT — title + subhead + CTA. Anchored to TOP of viewport (not centered)
+   so the house in the bottom half can't collide with the text. */
 .content {
   position: relative;
   z-index: 50;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 14vh 2rem 0;
   height: 100%;
-  padding: 0 2rem;
   text-align: center;
   isolation: isolate;
   pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  .content { padding-top: 16vh; }
 }
 
 .title h1 {
