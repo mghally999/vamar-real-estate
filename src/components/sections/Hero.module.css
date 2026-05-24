@@ -180,6 +180,7 @@
   line-height: 1;
   letter-spacing: -0.02em;
   text-align: center;
+  color: #151717;
 }
 @media (min-width: 1024px) { .title h1 { font-size: 14rem; } }
 
@@ -190,6 +191,7 @@
   line-height: 1.5;
   text-align: center;
   text-wrap: balance;
+  color: #151717;
 }
 @media (min-width: 1024px) {
   .text { margin-top: 2rem; font-size: 3.2rem; line-height: 1.3; letter-spacing: -0.01em; }
