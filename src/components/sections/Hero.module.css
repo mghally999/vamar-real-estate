@@ -45,8 +45,8 @@
   object-position: center;
 }
 
-/* HOUSE — flush to bottom of sticky viewport. Only the top portion shows;
-   .top { overflow: hidden } clips anything extending past 100vh. */
+/* HOUSE — flush to bottom of sticky viewport, fixed visible height so only
+   the top portion of the building shows (lower part clipped by overflow). */
 .house {
   position: absolute;
   left: 50%;
@@ -54,16 +54,17 @@
   transform: translateX(-50%);
   width: 55vw;
   max-width: 56rem;
-  height: auto;
+  height: 40vh;
+  overflow: hidden;
   z-index: 2;
   transform-origin: bottom center;
   pointer-events: none;
 }
 @media (min-width: 1024px) {
   .house {
-    width: 46vw;
-    max-width: 68rem;
-    bottom: 0;
+    width: 45vw;
+    max-width: 64rem;
+    height: 42vh;
   }
 }
 .house img {
@@ -115,17 +116,19 @@
 }
 .cloud img { width: 100%; height: auto; display: block; }
 
-/* SMOKE — small atmospheric layer at the very bottom. NOT a half-viewport blanket. */
+/* SMOKE — thin atmospheric wisp at the very bottom edge. Reference shows
+   it only as a faint band, not a half-screen blanket. */
 .smoke {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   width: 100%;
-  height: 12rem;
+  height: 5rem;
   z-index: 4;
   pointer-events: none;
+  opacity: 0.7;
 }
-@media (min-width: 1024px) { .smoke { height: 18rem; } }
-.top .smoke { transform: translateY(70%); }
+@media (min-width: 1024px) { .smoke { height: 7rem; } }
+.top .smoke { transform: translateY(50%); }
 .smoke img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -175,7 +178,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 14vh 2rem 0;
+  padding: 12vh 2rem 0;
   height: 100%;
   text-align: center;
   isolation: isolate;
@@ -183,7 +186,7 @@
 }
 
 @media (min-width: 1024px) {
-  .content { padding-top: 16vh; }
+  .content { padding-top: 14vh; }
 }
 
 .title h1 {
@@ -200,13 +203,13 @@
 }
 
 .text {
-  margin: 1.25rem 0 0;
+  margin: 1.5rem 0 0;
   font-weight: 500;
   font-size: clamp(1rem, 1.4vw, 1.3rem);
   line-height: 1.5;
   text-align: center;
   color: #151717;
-  max-width: 52ch;
+  max-width: 64ch;
 }
 
 .em { color: rgba(21, 23, 23, 0.5); }
