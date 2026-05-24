@@ -106,9 +106,10 @@
   object-fit: contain;
 }
 
-/* clouds — two asymmetric instances */
-.clouds { position: absolute; inset: 0; z-index: 2; }
-.cloud { position: absolute; z-index: 2; }
+/* clouds — two asymmetric instances. Top of the stack so they float over
+   the house + masked composite. */
+.clouds { position: absolute; inset: 0; z-index: 5; }
+.cloud { position: absolute; z-index: 5; }
 .cloud:first-child {
   top: 33.7rem;  left: -57.2rem;
   width: 70.2rem; height: 29.8rem;
@@ -129,14 +130,15 @@
 }
 .cloud img { width: 100%; height: 100%; object-fit: cover; }
 
-/* FIND wordmark stroke (drawn in mid-scroll) */
+/* FIND wordmark stroke (drawn in mid-scroll). Highest z so the outline draws
+   on top of clouds + smoke during the stroke animation. */
 .logo {
   position: absolute;
   top: calc(50% - 5.1rem);
   left: calc(50% - 11.75rem);
   width: 23.5rem;
   height: 10.2rem;
-  z-index: 1;
+  z-index: 6;
   opacity: 0;
 }
 @media (min-width: 1024px) {
@@ -170,7 +172,8 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 45rem;
-  z-index: 3;
+  z-index: 4;
+  pointer-events: none;
 }
 @media (min-width: 1024px) { .smoke { height: 62rem; } }
 /* the TOP smoke starts pushed down */
