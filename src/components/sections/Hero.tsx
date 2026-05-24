@@ -112,27 +112,49 @@ export function Hero() {
         0
       );
       if (wordEls && wordEls.length) {
-        intro.from(
+        intro.fromTo(
           wordEls,
-          { yPercent: 100, duration: 2, stagger: 0.1, ease: "expo.out" },
+          { yPercent: 100 },
+          { yPercent: 0, duration: 2, stagger: 0.1, ease: "expo.out" },
           0
         );
       }
-      intro.from(
+      intro.fromTo(
         [textRef.current, actionsRef.current],
-        { opacity: 0, y: 16, duration: 0.6, stagger: 0.06, ease: "power3.out" },
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power3.out" },
         0.4
       );
-      intro.from(backRef.current, { scale: 1.1, duration: 5, ease: "expo.out" }, 0);
-      intro.from(cloudL.current, { y: "50%", duration: 3, ease: "expo.out" }, 0);
-      intro.from(cloudR.current, { y: "100%", duration: 4, ease: "expo.out" }, 0.1);
+      intro.fromTo(
+        backRef.current,
+        { scale: 1.1 },
+        { scale: 1, duration: 5, ease: "expo.out" },
+        0
+      );
+      intro.fromTo(
+        cloudL.current,
+        { y: "50%" },
+        { y: "0%", duration: 3, ease: "expo.out" },
+        0
+      );
+      intro.fromTo(
+        cloudR.current,
+        { y: "100%" },
+        { y: "0%", duration: 4, ease: "expo.out" },
+        0.1
+      );
 
       const houseImgs = [
         houseBg.current?.querySelector("img"),
         houseFg.current?.querySelector("img"),
       ].filter(Boolean);
-      intro.from(houseImgs, { opacity: 0, duration: 0.6 }, 0.2);
-      intro.from(houseImgs, { y: "10%", duration: 3, ease: "expo.out" }, 0.2);
+      intro.fromTo(houseImgs, { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.2);
+      intro.fromTo(
+        houseImgs,
+        { y: "10%" },
+        { y: "0%", duration: 3, ease: "expo.out" },
+        0.2
+      );
 
       const t = setTimeout(
         () => requestAnimationFrame(() => intro.play()),
@@ -151,7 +173,8 @@ export function Hero() {
             <Image
               src="/img/hero/back.f53e9773.webp"
               alt=""
-              fill
+              width={1920}
+              height={1080}
               priority
               sizes="100vw"
             />
@@ -186,16 +209,18 @@ export function Hero() {
               <Image
                 src="/img/hero/cloud.c8800fa9.webp"
                 alt=""
-                fill
-                sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 33vw"
+                width={768}
+                height={326}
+                sizes="50vw"
               />
             </div>
             <div ref={cloudR} className={styles.cloud}>
               <Image
                 src="/img/hero/cloud.c8800fa9.webp"
                 alt=""
-                fill
-                sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 33vw"
+                width={768}
+                height={326}
+                sizes="50vw"
               />
             </div>
           </div>
@@ -208,9 +233,10 @@ export function Hero() {
             <Image
               src="/img/hero/smoke.9f683cb4.webp"
               alt=""
-              fill
+              width={768}
+              height={248}
               priority
-              sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="100vw"
             />
           </div>
         </div>
@@ -243,9 +269,10 @@ export function Hero() {
             <Image
               src="/img/hero/smoke.9f683cb4.webp"
               alt=""
-              fill
+              width={768}
+              height={248}
               priority
-              sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="100vw"
             />
           </div>
           <div className={styles.overlay} />

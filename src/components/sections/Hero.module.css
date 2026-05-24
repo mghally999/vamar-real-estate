@@ -1,11 +1,5 @@
-/* =============================================================================
-   Hero — CSS Module
-   Ported from reference-from-har/hero_css_reference.css.
-   Classes renamed from `.hero-*` to local CSS-module names.
-   Mask URL changed from `./wordmark_mask_FIND.svg` to `/img/hero/...`
-   (file is served from public/, not bundled).
-   Mobile values first; @media (min-width: 1024px) overrides for desktop.
-   ============================================================================= */
+/* Hero.module.css — rewritten for proper layered hero parity.
+   Replaces the original 1:1 reference port that didn't work in this layout. */
 
 .root {
   position: relative;
@@ -13,24 +7,20 @@
   margin-bottom: -100vh;
   background: #f4d4b6;
 }
-/* Only hide if intro tween will run. Reduced-motion users skip the intro and
-   need the hero visible immediately. */
 @media (prefers-reduced-motion: no-preference) {
   .root { visibility: hidden; }
 }
-@media (min-width: 1024px) {
-  .root { height: 500vh; }
-}
+@media (min-width: 1024px) { .root { height: 500vh; } }
 .root:first-of-type { margin-top: -8.4rem; }
 @media (min-width: 1024px) {
   .root:first-of-type { margin-top: -9.8rem; }
 }
 
-/* sticky pinned viewport — what the user actually sees */
 .top {
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow: hidden;
 }
 
 .bg {
@@ -38,49 +28,20 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(180deg, #cfe1f0 0%, #f4d4b6 100%);
+  background: linear-gradient(180deg, #cfe1f0 0%, #f4d4b6 70%, #f7d7b4 100%);
 }
 
-/* back plate = sunset sky */
-.back { position: absolute; inset: 0; }
+.back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 .back img {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-/* composite = foreground house wrapper, masked to FIND wordmark.
-   Mask sized in vw so it scales with the viewport and aspect-preserves via
-   `auto`. Mask-position vertical offset places it over the house, not in
-   empty space above. */
-.composite {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  opacity: 0;
-  pointer-events: none;
-  -webkit-mask-image: url('/img/hero/wordmark_mask_FIND.svg');
-          mask-image: url('/img/hero/wordmark_mask_FIND.svg');
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center 60%;
-          mask-position: center 60%;
-  -webkit-mask-size: 80vw auto;
-          mask-size: 80vw auto;
-}
-@media (min-width: 1024px) {
-  .composite {
-    -webkit-mask-position: center 50%;
-            mask-position: center 50%;
-    -webkit-mask-size: 70vw auto;
-            mask-size: 70vw auto;
-  }
-}
-
-/* house — used twice: bare instance + nested inside composite.
-   Anchored to bottom of .bg so it sits in the lower half. The reference's
-   170.8rem container with object-fit:contain rendered offscreen at our
-   viewport scale — replaced with vw-relative width + auto height. */
 .house {
   position: absolute;
   bottom: -8vh;
@@ -91,6 +52,7 @@
   height: auto;
   z-index: 2;
   transform-origin: bottom center;
+  pointer-events: none;
 }
 @media (min-width: 1024px) {
   .house {
@@ -103,53 +65,95 @@
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
 }
 
-/* clouds — two asymmetric instances. Top of the stack so they float over
-   the house + masked composite. */
-.clouds { position: absolute; inset: 0; z-index: 5; }
-.cloud { position: absolute; z-index: 5; }
+.composite {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask-image: url('/img/hero/wordmark_mask_FIND.svg');
+          mask-image: url('/img/hero/wordmark_mask_FIND.svg');
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center 50%;
+          mask-position: center 50%;
+  -webkit-mask-size: 80vw auto;
+          mask-size: 80vw auto;
+}
+@media (min-width: 1024px) {
+  .composite {
+    -webkit-mask-size: 70vw auto;
+            mask-size: 70vw auto;
+    -webkit-mask-position: center 45%;
+            mask-position: center 45%;
+  }
+}
+
+.smoke {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 45rem;
+  z-index: 4;
+  pointer-events: none;
+}
+@media (min-width: 1024px) { .smoke { height: 38rem; } }
+.top .smoke { transform: translateY(70%); }
+.smoke img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.clouds { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.cloud {
+  position: absolute;
+  z-index: 5;
+  width: 50vw;
+  max-width: 700px;
+  height: auto;
+}
 .cloud:first-child {
-  top: 33.7rem;  left: -57.2rem;
-  width: 70.2rem; height: 29.8rem;
+  top: 8vh; left: -10vw;
 }
 .cloud:last-child {
-  top: 37.12rem; right: -41.2rem;
-  width: 55.7rem; height: 23.6rem;
+  top: 12vh; right: -10vw;
 }
 @media (min-width: 1024px) {
   .cloud:first-child {
-    top: 25%;     left: -33.72rem;
-    width: 112.4rem; height: 47.7rem;
+    top: 6vh; left: -8vw;
+    width: 45vw;
+    max-width: 900px;
   }
   .cloud:last-child {
-    top: 20%;     right: -33.72rem;
-    width: 93.6rem; height: 39.7rem;
+    top: 4vh; right: -8vw;
+    width: 40vw;
+    max-width: 850px;
   }
 }
-.cloud img { width: 100%; height: 100%; object-fit: cover; }
+.cloud img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-/* FIND wordmark stroke (drawn in mid-scroll). Highest z so the outline draws
-   on top of clouds + smoke during the stroke animation. */
 .logo {
   position: absolute;
-  top: calc(50% - 5.1rem);
-  left: calc(50% - 11.75rem);
-  width: 23.5rem;
-  height: 10.2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: auto;
   z-index: 6;
   opacity: 0;
+  pointer-events: none;
 }
 @media (min-width: 1024px) {
-  .logo {
-    top:  calc(50% - 21.15rem);
-    left: calc(50% - 48.85rem);
-    width: 97.7rem;
-    height: 42.3rem;
-  }
+  .logo { width: 70vw; }
 }
-.logo svg { width: 100%; height: 100%; overflow: visible; }
+.logo svg { width: 100%; height: auto; overflow: visible; }
 .logo svg g { stroke-width: 3px; }
 .logo path {
   fill: transparent;
@@ -161,79 +165,62 @@
   .logo path { stroke-width: 2px; }
 }
 
-/* smoke — used twice: top in the sticky bg, bottom in the overlap */
 .overlap {
   position: absolute;
   top: 0; left: 0; right: 0;
   bottom: 100vh;
   pointer-events: none;
 }
-.smoke {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 45rem;
-  z-index: 4;
-  pointer-events: none;
-}
-@media (min-width: 1024px) { .smoke { height: 62rem; } }
-/* the TOP smoke starts pushed down */
-.top .smoke { transform: translateY(70%); }
-.smoke img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
 
-/* white overlay gradient at the bottom — smooths into the next section */
 .overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 10rem;
-  z-index: 3;
+  z-index: 6;
   background: linear-gradient(180deg, rgba(255,255,255,0), #fff);
 }
-@media (min-width: 1024px) { .overlay { height: 30.9rem; } }
+@media (min-width: 1024px) { .overlay { height: 18rem; } }
 
-/* content — title / sub / CTA, centered in the sticky viewport */
 .content {
   position: relative;
+  z-index: 10;
   display: grid;
-  align-items: center;
+  place-items: center;
   height: 100%;
-  padding-bottom: 15rem;
+  padding: 0 2rem 12rem;
+  text-align: center;
 }
-@media (min-width: 1024px) { .content { padding-bottom: 22.8rem; } }
+@media (min-width: 1024px) {
+  .content { padding-bottom: 14vh; }
+}
 
 .title h1 {
   font-weight: 700;
-  font-size: 5.4rem;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   text-align: center;
   color: #151717;
+  margin: 0;
 }
-@media (min-width: 1024px) { .title h1 { font-size: 14rem; } }
 
 .text {
   margin: 1.5rem 0 0;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
   line-height: 1.5;
   text-align: center;
   text-wrap: balance;
   color: #151717;
+  max-width: 50ch;
 }
-@media (min-width: 1024px) {
-  .text { margin-top: 2rem; font-size: 3.2rem; line-height: 1.3; letter-spacing: -0.01em; }
-}
+
 .em { color: rgba(21, 23, 23, 0.5); }
 
 .actions {
-  margin: 3rem 0 0;
+  margin: 2rem 0 0;
   display: flex;
   justify-content: center;
 }
-@media (min-width: 1024px) { .actions { margin-top: 4rem; } }
 
-/* bottom wrapper for the overlap layer — minimal passthrough */
 .bottom { position: relative; }
