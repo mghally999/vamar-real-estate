@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PillButton } from "@/components/primitives/PillButton";
+import { VamarLogo } from "@/components/primitives/VamarLogo";
 import { cn } from "@/lib/cn";
 
 const NAV_LINKS = [
   { href: "/search", label: "Search" },
   { href: "/agents", label: "Agents" },
-  { href: "/join", label: "Join" },
   { href: "/paperwork", label: "Paperwork" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
@@ -48,9 +48,10 @@ export function Header() {
           className="flex items-center"
           aria-label="Vamar Real Estate — Home"
         >
-          <span className="font-bold tracking-tight text-2xl sm:text-3xl text-[var(--ink)]">
-            Vamar<span className="text-[var(--ink-soft)]">.</span>
-          </span>
+          <VamarLogo
+            withSubtitle={false}
+            className="h-7 sm:h-8 w-auto text-[#151717]"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
@@ -58,7 +59,7 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm tracking-[-0.01em] text-[var(--ink)] hover:text-[var(--ink-soft)] transition-colors"
+              className="text-sm tracking-[-0.01em] text-[#151717] hover:text-[#151717]/60 transition-colors"
             >
               {l.label}
             </Link>

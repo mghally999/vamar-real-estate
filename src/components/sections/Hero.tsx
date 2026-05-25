@@ -30,7 +30,9 @@ export function Hero() {
   // Phase 2 — scrub timeline ----------------------------------------------
   useGSAP(
     () => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const reduce = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       if (reduce || !root.current) return;
 
       registerGsap();
@@ -39,7 +41,7 @@ export function Hero() {
       tl.to(
         [houseBg.current, houseFg.current],
         { y: "-40%", scale: 1.3, duration: 1, ease: "none" },
-        0
+        0,
       );
       tl.to(smokeTop.current, { y: "0%", duration: 1, ease: "none" }, 0);
       tl.to(cloudL.current, { x: "-15%", duration: 1, ease: "none" }, 0);
@@ -47,7 +49,7 @@ export function Hero() {
       tl.to(
         content.current,
         { y: "20%", scale: 0.9, duration: 1, ease: "none" },
-        0
+        0,
       );
       tl.to(content.current, { opacity: 0, duration: 0.2, ease: "none" }, 0);
       tl.to(logo.current, { opacity: 1, duration: 0.01 }, 0.1);
@@ -55,7 +57,7 @@ export function Hero() {
       tl.to(
         composite.current,
         { opacity: 1, duration: 0.1, ease: "none" },
-        0.3
+        0.3,
       );
       tl.to(houseBg.current, { opacity: 0, duration: 0.1, ease: "none" }, 0.3);
 
@@ -68,13 +70,15 @@ export function Hero() {
         invalidateOnRefresh: true,
       });
     },
-    { scope: root }
+    { scope: root },
   );
 
   // Phase 2 — intro timeline ----------------------------------------------
   useGSAP(
     () => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const reduce = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       if (reduce || !root.current) return;
 
       const h1 = titleRef.current?.querySelector("h1");
@@ -83,7 +87,7 @@ export function Hero() {
         h1.innerHTML = words
           .map(
             (w) =>
-              `<span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span class="word" style="display:inline-block;will-change:transform">${w}</span></span>`
+              `<span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span class="word" style="display:inline-block;will-change:transform">${w}</span></span>`,
           )
           .join(" ");
         h1.dataset.split = "1";
@@ -96,53 +100,58 @@ export function Hero() {
           wordEls,
           { yPercent: 100 },
           { yPercent: 0, duration: 2, stagger: 0.1, ease: "expo.out" },
-          0
+          0,
         );
       }
       intro.fromTo(
         [textRef.current, actionsRef.current],
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power3.out" },
-        0.4
+        0.4,
       );
       intro.fromTo(
         backRef.current,
         { scale: 1.1 },
         { scale: 1, duration: 5, ease: "expo.out" },
-        0
+        0,
       );
       intro.fromTo(
         cloudL.current,
         { y: "50%" },
         { y: "0%", duration: 3, ease: "expo.out" },
-        0
+        0,
       );
       intro.fromTo(
         cloudR.current,
         { y: "100%" },
         { y: "0%", duration: 4, ease: "expo.out" },
-        0.1
+        0.1,
       );
 
       const houseImgs = [
         houseBg.current?.querySelector("img"),
         houseFg.current?.querySelector("img"),
       ].filter(Boolean);
-      intro.fromTo(houseImgs, { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.2);
+      intro.fromTo(
+        houseImgs,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.6 },
+        0.2,
+      );
       intro.fromTo(
         houseImgs,
         { y: "10%" },
         { y: "0%", duration: 3, ease: "expo.out" },
-        0.2
+        0.2,
       );
 
       const t = setTimeout(
         () => requestAnimationFrame(() => intro.play()),
-        200
+        200,
       );
       return () => clearTimeout(t);
     },
-    { scope: root }
+    { scope: root },
   );
 
   return (

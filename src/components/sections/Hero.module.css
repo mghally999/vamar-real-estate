@@ -7,16 +7,24 @@
   margin-bottom: -100vh;
   background: linear-gradient(180deg, #cfe1f0 0%, #f0d4b8 65%, #f5c89f 100%);
 }
-@media (min-width: 1024px) { .root { height: 500vh; } }
-.root:first-of-type { margin-top: -8.4rem; }
 @media (min-width: 1024px) {
-  .root:first-of-type { margin-top: -9.8rem; }
+  .root {
+    height: 500vh;
+  }
+}
+.root:first-of-type {
+  margin-top: 0;
+}
+@media (min-width: 1024px) {
+  .root:first-of-type {
+    margin-top: 0;
+  }
 }
 
 .top {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 120vh;
   overflow: hidden;
 }
 
@@ -26,9 +34,14 @@
   pointer-events: none;
 }
 
-.back { position: absolute; inset: 0; z-index: 1; }
+.back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 .back img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -39,9 +52,9 @@
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 60vw;
-  max-width: 56rem;
-  height: 38vh;
+  width: 100vw;
+  /* max-width: 56rem; */
+  height: 100vh;
   z-index: 2;
   transform-origin: bottom center;
   pointer-events: none;
@@ -49,8 +62,8 @@
 @media (min-width: 1024px) {
   .house {
     width: 48vw;
-    max-width: 68rem;
-    height: 42vh;
+    max-width: 100rem;
+    height: 80vh;
   }
 }
 .house img {
@@ -67,52 +80,88 @@
   z-index: 3;
   opacity: 0;
   pointer-events: none;
-  -webkit-mask-image: url('/img/hero/wordmark_mask_FIND.svg');
-          mask-image: url('/img/hero/wordmark_mask_FIND.svg');
+  -webkit-mask-image: url("/img/hero/wordmark_mask_FIND.svg");
+  mask-image: url("/img/hero/wordmark_mask_FIND.svg");
   -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   -webkit-mask-position: center 50%;
-          mask-position: center 50%;
+  mask-position: center 50%;
   -webkit-mask-size: 80vw auto;
-          mask-size: 80vw auto;
+  mask-size: 80vw auto;
 }
 @media (min-width: 1024px) {
   .composite {
     -webkit-mask-size: 65vw auto;
-            mask-size: 65vw auto;
+    mask-size: 65vw auto;
   }
 }
 
 .smoke {
   position: absolute;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: 5rem;
+  height: 45rem;
   z-index: 4;
   pointer-events: none;
-  opacity: 0.7;
 }
-@media (min-width: 1024px) { .smoke { height: 7rem; } }
-.top .smoke { transform: translateY(50%); }
+@media (min-width: 1024px) {
+  .smoke {
+    height: 62rem;
+  }
+}
+.top .smoke {
+  transform: translateY(70%);
+}
 .smoke img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
 }
 
-.clouds { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
-.cloud { position: absolute; }
-.cloud:first-child { top: 5vh; left: -8vw; width: 45vw; }
-.cloud:last-child { top: 8vh; right: -8vw; width: 40vw; }
-@media (min-width: 1024px) {
-  .cloud:first-child { top: 3vh; left: -6vw; width: 38vw; }
-  .cloud:last-child { top: 6vh; right: -6vw; width: 32vw; }
+.clouds {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
 }
-.cloud img { width: 100%; height: auto; display: block; }
+.cloud {
+  position: absolute;
+}
+.cloud:first-child {
+  top: 28vh;
+  left: -8vw;
+  width: 45vw;
+}
+.cloud:last-child {
+  top: 32vh;
+  right: -8vw;
+  width: 40vw;
+}
+@media (min-width: 1024px) {
+  .cloud:first-child {
+    top: 24vh;
+    left: -6vw;
+    width: 38vw;
+  }
+  .cloud:last-child {
+    top: 28vh;
+    right: -6vw;
+    width: 32vw;
+  }
+}
+.cloud img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 .logo {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
   height: auto;
@@ -120,25 +169,44 @@
   opacity: 0;
   pointer-events: none;
 }
-@media (min-width: 1024px) { .logo { width: 65vw; } }
-.logo svg { width: 100%; height: auto; overflow: visible; }
-.logo svg g { stroke: #fff; stroke-width: 3px; fill: transparent; }
-@media (min-width: 1024px) { .logo svg g { stroke-width: 2px; } }
+@media (min-width: 1024px) {
+  .logo {
+    width: 65vw;
+  }
+}
+.logo svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.logo svg g {
+  stroke: #fff;
+  stroke-width: 3px;
+  fill: transparent;
+}
+@media (min-width: 1024px) {
+  .logo svg g {
+    stroke-width: 2px;
+  }
+}
 
 .overlap {
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 100vh;
   pointer-events: none;
 }
 .overlay {
   position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 8rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
   z-index: 6;
-  background: linear-gradient(180deg, rgba(255,255,255,0), #f5f4ef);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #f5f4ef);
 }
-@media (min-width: 1024px) { .overlay { height: 14rem; } }
 
 /* CONTENT — always visible. No visibility:hidden, no autoAlpha. */
 .content {
@@ -153,7 +221,11 @@
   text-align: center;
   pointer-events: auto;
 }
-@media (min-width: 1024px) { .content { padding-top: 16vh; } }
+@media (min-width: 1024px) {
+  .content {
+    padding-top: 16vh;
+  }
+}
 
 .title h1 {
   font-weight: 800;
@@ -177,8 +249,91 @@
   max-width: 60ch;
 }
 
-.em { color: rgba(21, 23, 23, 0.5); }
+.em {
+  color: rgba(21, 23, 23, 0.5);
+}
 
-.actions { margin: 2rem 0 0; display: flex; justify-content: center; }
+.actions {
+  margin: 2rem 0 0;
+  display: flex;
+  justify-content: center;
+}
 
-.bottom { position: relative; }
+.bottom {
+  position: relative;
+}
+
+/* line 65: house fills the ENTIRE viewport */
+.house {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* line 75 (desktop): still 80% of viewport */
+.house {
+  width: 48vw;
+  height: 80vh;
+}
+
+/* line 113: smoke is 45rem (720px) tall — that's your white fog */
+.smoke {
+  height: 45rem;
+}
+
+/* line 11: pulls next section UP by 100vh — the overlap */
+.root {
+  margin-bottom: -100vh;
+}
+
+/* line 196: full-viewport white fade — more fog */
+.overlay {
+  height: 100vh;
+}
+
+.cloud:first-child {
+  top: 18vh; /* was 5vh */
+  left: -12vw;
+  width: 50vw;
+}
+.cloud:last-child {
+  top: 22vh; /* was 8vh */
+  right: -12vw;
+  width: 45vw;
+}
+
+@media (min-width: 1024px) {
+  .cloud:first-child {
+    top: 14vh;
+    left: -8vw;
+    width: 42vw;
+  }
+  .cloud:last-child {
+    top: 18vh;
+    right: -8vw;
+    width: 36vw;
+  }
+}
+
+.cloud:first-child {
+  top: 28vh; /* was 5vh */
+  left: -8vw;
+  width: 45vw;
+}
+.cloud:last-child {
+  top: 32vh; /* was 8vh */
+  right: -8vw;
+  width: 40vw;
+}
+
+@media (min-width: 1024px) {
+  .cloud:first-child {
+    top: 24vh; /* was 3vh */
+    left: -6vw;
+    width: 38vw;
+  }
+  .cloud:last-child {
+    top: 28vh; /* was 6vh */
+    right: -6vw;
+    width: 32vw;
+  }
+}

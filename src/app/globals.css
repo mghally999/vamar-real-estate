@@ -1,18 +1,19 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Vamar brand palette (sourced from /Users/.../Vamar-main/app — root project identity). */
+/* Vamar brand palette — deep navy + brass, sourced from /public/assets/vamar-brand.webp.
+   Walls #162842, brass accents on the logo, cream furnishings. */
 :root {
   /* Default = LIGHT theme. <html data-theme="dark"> overrides below. */
   --bg: #f5f4ef;
   --bg-elev: #ffffff;
-  --ink: #272F36;
-  --ink-soft: rgba(39, 47, 54, 0.7);
-  --ink-faint: rgba(39, 47, 54, 0.35);
-  --accent: #37474F;
-  --pill: #272F36;
-  --pill-text: #ffffff;
-  --line: rgba(39, 47, 54, 0.12);
+  --ink: #162842;
+  --ink-soft: rgba(22, 40, 66, 0.7);
+  --ink-faint: rgba(22, 40, 66, 0.35);
+  --accent: #b8a280;
+  --pill: #162842;
+  --pill-text: #f5f4ef;
+  --line: rgba(22, 40, 66, 0.14);
   --radius-pill: 999px;
 
   --font-display: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
@@ -31,17 +32,17 @@ html[data-theme="light"] .dark-invert {
   filter: invert(1) brightness(0.45);
 }
 
-/* DARK theme — root-project Vamar identity (#272F36 slate body + white ink) */
+/* DARK theme — navy body + warm cream ink, brass accent preserved */
 html[data-theme="dark"] {
-  --bg: #272F36;
-  --bg-elev: #2F3941;
-  --ink: #ffffff;
-  --ink-soft: rgba(255, 255, 255, 0.72);
-  --ink-faint: rgba(255, 255, 255, 0.35);
-  --accent: #9AB3C2;
-  --pill: #ffffff;
-  --pill-text: #272F36;
-  --line: rgba(255, 255, 255, 0.14);
+  --bg: #0d1f33;
+  --bg-elev: #162842;
+  --ink: #ebe6dd;
+  --ink-soft: rgba(235, 230, 221, 0.72);
+  --ink-faint: rgba(235, 230, 221, 0.35);
+  --accent: #c9b48f;
+  --pill: #ebe6dd;
+  --pill-text: #162842;
+  --line: rgba(235, 230, 221, 0.16);
 }
 
 @theme inline {
