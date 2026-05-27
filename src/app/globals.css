@@ -18,6 +18,7 @@
 
   --font-display: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-arabic), "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
 
   --t-hero: clamp(3.5rem, 9vw, 8.5rem);
   --t-h1: clamp(2.5rem, 6vw, 5rem);
@@ -213,6 +214,11 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* RTL: use Arabic font family when dir=rtl */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic);
 }
 
 .no-scrollbar::-webkit-scrollbar {

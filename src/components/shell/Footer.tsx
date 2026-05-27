@@ -1,25 +1,23 @@
 import Link from "next/link";
 import { VamarLogo } from "@/components/primitives/VamarLogo";
+import type { Locale } from "@/lib/i18n-config";
+import type { Dictionary } from "@/lib/getDictionary";
 
-const COL_1 = [
-  { href: "/agents", label: "Agents" },
-  { href: "/about", label: "About" },
-  { href: "/apply", label: "Apply" },
-];
+type Dict = Dictionary["footer"];
 
-const COL_2 = [
-  { href: "/paperwork", label: "Paperwork" },
-  { href: "/agents", label: "Find your agent" },
-  { href: "/apply", label: "Join Vamar" },
-];
+export function Footer({ locale, dict }: { locale: Locale; dict: Dict }) {
+  const siteLinks = [
+    { href: `/${locale}/agents`, label: dict.siteHeading === "Site" ? "Team" : "الفريق" },
+    { href: `/${locale}/about`, label: dict.siteHeading === "Site" ? "About" : "من نحن" },
+    { href: `/${locale}/apply`, label: dict.siteHeading === "Site" ? "Contact" : "تواصل" },
+  ];
 
-const COL_3 = [
-  { href: "#", label: "Instagram" },
-  { href: "#", label: "LinkedIn" },
-  { href: "#", label: "Twitter" },
-];
+  const resourceLinks = [
+    { href: `/${locale}/paperwork`, label: dict.siteHeading === "Site" ? "Paperwork" : "الإجراءات" },
+    { href: `/${locale}/resources`, label: dict.siteHeading === "Site" ? "Resources" : "مقالات" },
+    { href: `/${locale}/search`, label: dict.siteHeading === "Site" ? "Opportunities" : "الفرص" },
+  ];
 
-export function Footer() {
   return (
     <footer className="bg-[var(--ink)] text-[var(--bg)] mt-32">
       <div className="container-x py-16 sm:py-20">
@@ -27,22 +25,21 @@ export function Footer() {
           <div className="sm:col-span-5">
             <VamarLogo className="h-14 sm:h-16 w-auto text-[var(--bg)] mb-8" />
             <div className="text-4xl sm:text-5xl font-semibold tracking-[-0.03em]">
-              find what moves you.
+              {dict.tagline}
             </div>
             <p className="mt-6 max-w-md text-[var(--bg)]/65 leading-relaxed">
-              Real guidance from real agents. Built around your next chapter —
-              wherever it takes you.
+              {dict.blurb}
             </p>
           </div>
 
           <nav
             className="sm:col-span-2 flex flex-col gap-3 text-sm"
-            aria-label="Site"
+            aria-label={dict.siteHeading}
           >
             <div className="text-[var(--bg)]/55 uppercase tracking-[0.18em] text-[0.7rem] mb-2">
-              Site
+              {dict.siteHeading}
             </div>
-            {COL_1.map((l) => (
+            {siteLinks.map((l) => (
               <Link key={l.label} href={l.href} className="hover:opacity-80">
                 {l.label}
               </Link>
@@ -51,44 +48,45 @@ export function Footer() {
 
           <nav
             className="sm:col-span-2 flex flex-col gap-3 text-sm"
-            aria-label="Resources"
+            aria-label={dict.resourcesHeading}
           >
             <div className="text-[var(--bg)]/55 uppercase tracking-[0.18em] text-[0.7rem] mb-2">
-              Resources
+              {dict.resourcesHeading}
             </div>
-            {COL_2.map((l) => (
+            {resourceLinks.map((l) => (
               <Link key={l.label} href={l.href} className="hover:opacity-80">
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          <nav
-            className="sm:col-span-3 flex flex-col gap-3 text-sm"
-            aria-label="Social"
-          >
+          <div className="sm:col-span-3 flex flex-col gap-3 text-sm">
             <div className="text-[var(--bg)]/55 uppercase tracking-[0.18em] text-[0.7rem] mb-2">
-              Connect
+              {dict.contactHeading}
             </div>
-            {COL_3.map((l) => (
-              <a key={l.label} href={l.href} className="hover:opacity-80">
-                {l.label}
-              </a>
-            ))}
-          </nav>
+            <a href={`tel:${dict.phone.replace(/\s/g, "")}`} className="hover:opacity-80">
+              {dict.phone}
+            </a>
+            <a href={`mailto:${dict.email}`} className="hover:opacity-80">
+              {dict.email}
+            </a>
+            <span className="text-[var(--bg)]/65">{dict.address}</span>
+          </div>
         </div>
 
         <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-[var(--bg)]/12 text-xs text-[var(--bg)]/55">
-          <div>© {new Date().getFullYear()} Vamar Real Estate. All rights reserved.</div>
+          <div>
+            &copy; {new Date().getFullYear()} Vamar Real Estate. {dict.rights}
+          </div>
           <div className="flex gap-6">
             <Link href="#" className="hover:opacity-80">
-              Privacy
+              {dict.privacy}
             </Link>
             <Link href="#" className="hover:opacity-80">
-              Terms
+              {dict.terms}
             </Link>
             <Link href="#" className="hover:opacity-80">
-              Equal Housing
+              {dict.compliance}
             </Link>
           </div>
         </div>

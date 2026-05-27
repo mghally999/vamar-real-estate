@@ -6,8 +6,18 @@ import { useGSAP } from "@gsap/react";
 import { gsap, registerGsap } from "@/lib/gsap";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
+import type { Dictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n-config";
 
-export function BigVamarSignoff() {
+type Dict = Dictionary["signoff"];
+
+export function BigVamarSignoff({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -80,7 +90,6 @@ export function BigVamarSignoff() {
       ref={ref}
       className="relative pt-24 sm:pt-40 pb-12 sm:pb-20 overflow-hidden"
     >
-      {/* Soft sky / cloud backdrop — parallax behind the wordmark */}
       <div
         className="big-sky pointer-events-none absolute inset-x-0 top-0 -z-0 will-change-transform"
         style={{ height: "120%" }}
@@ -98,9 +107,7 @@ export function BigVamarSignoff() {
       </div>
 
       <div className="container-x relative z-10 flex flex-col items-center text-center">
-        <div className="big-sub eyebrow mb-8 sm:mb-12">
-          Find what moves you.
-        </div>
+        <div className="big-sub eyebrow mb-8 sm:mb-12">{dict.eyebrow}</div>
 
         <h2
           className="big-word display display-tight select-none leading-[0.85]"
@@ -118,13 +125,13 @@ export function BigVamarSignoff() {
           }}
           aria-label="Vamar"
         >
-          vamar.
+          {dict.wordmark}
         </h2>
 
         <div className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-3">
-          <PillButton href="/apply">Start your search</PillButton>
-          <PillButton href="/agents" variant="ghost">
-            Meet the agents
+          <PillButton href={`/${locale}/apply`}>{dict.ctaPrimary}</PillButton>
+          <PillButton href={`/${locale}/agents`} variant="ghost">
+            {dict.ctaSecondary}
           </PillButton>
         </div>
       </div>

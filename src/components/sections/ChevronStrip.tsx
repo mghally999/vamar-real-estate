@@ -5,15 +5,13 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap, registerGsap } from "@/lib/gsap";
 import { media } from "@/lib/media";
+import type { Dictionary } from "@/lib/getDictionary";
 
-const PANELS = [
-  { src: media.chev1, alt: "Sweeping luxury mansion exterior", tag: "Buy" },
-  { src: media.chev2, alt: "Warm modern interior at golden hour", tag: "Sell" },
-  { src: media.chev3, alt: "Tall urban building from below", tag: "Rent" },
-  { src: media.chev4, alt: "Architectural exterior at dusk", tag: "Invest" },
-];
+type Dict = Dictionary["chevronStrip"];
 
-export function ChevronStrip() {
+const PANEL_IMAGES = [media.chev1, media.chev2, media.chev3, media.chev4];
+
+export function ChevronStrip({ dict }: { dict: Dict }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -53,30 +51,35 @@ export function ChevronStrip() {
     { scope: ref }
   );
 
+  const panels = dict.panels.map((p, i) => ({
+    src: PANEL_IMAGES[i % PANEL_IMAGES.length],
+    alt: p.alt,
+    tag: p.tag,
+  }));
+
   return (
     <section
       ref={ref}
       className="relative overflow-hidden bg-[var(--bg)] py-20 sm:py-32"
-      aria-label="Lifestyle preview"
+      aria-label={dict.eyebrow}
     >
       <div className="container-x mb-10 sm:mb-14 flex items-end justify-between gap-6">
         <div>
-          <div className="eyebrow mb-3">Wherever you&apos;re going</div>
+          <div className="eyebrow mb-3">{dict.eyebrow}</div>
           <h2 className="h2 max-w-[18ch]">
-            A life lived in
+            {dict.title[0]}
             <br />
-            the right rooms.
+            {dict.title[1]}
           </h2>
         </div>
         <p className="hidden sm:block max-w-[34ch] text-[var(--ink-soft)]">
-          The buildings change. The brief is always the same: match the home to
-          the life.
+          {dict.subtitle}
         </p>
       </div>
 
       <div className="relative w-full">
         <div className="chev-track flex gap-6 sm:gap-10 px-6 sm:px-10 will-change-transform">
-          {PANELS.concat(PANELS).map((p, i) => (
+          {panels.concat(panels).map((p, i) => (
             <figure
               key={i}
               className="relative shrink-0 w-[78vw] sm:w-[44vw] lg:w-[34vw] aspect-[16/11] chevron overflow-hidden bg-[var(--line)]"
@@ -91,7 +94,9 @@ export function ChevronStrip() {
               />
               <figcaption className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white text-xs uppercase tracking-[0.18em]">
                 <span>{p.tag}</span>
-                <span className="opacity-80">0{(i % PANELS.length) + 1}</span>
+                <span className="opacity-80">
+                  0{(i % panels.length) + 1}
+                </span>
               </figcaption>
             </figure>
           ))}

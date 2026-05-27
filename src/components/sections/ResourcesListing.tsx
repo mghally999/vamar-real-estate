@@ -6,12 +6,20 @@ import Link from "next/link";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { ARTICLES, type Article } from "@/data/resources";
 import { cn } from "@/lib/cn";
+import type { Dictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n-config";
 
-const ALL_TAGS = Array.from(
-  new Set(ARTICLES.flatMap((a) => a.tags))
-).sort();
+type Dict = Dictionary["resources"];
 
-export function ResourcesListing() {
+const ALL_TAGS = Array.from(new Set(ARTICLES.flatMap((a) => a.tags))).sort();
+
+export function ResourcesListing({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
@@ -23,19 +31,17 @@ export function ResourcesListing() {
     <section className="pt-32 sm:pt-40 pb-24">
       <div className="container-x">
         <RevealOnView>
-          <div className="eyebrow mb-4">Resources</div>
+          <div className="eyebrow mb-4">{dict.eyebrow}</div>
           <h1
             className="display display-tight max-w-[20ch]"
             style={{ fontSize: "var(--t-h1)" }}
           >
-            Reading worth
+            {dict.title[0]}
             <br />
-            your time.
+            {dict.title[1]}
           </h1>
           <p className="mt-6 max-w-[44ch] text-[var(--ink-soft)] text-lg">
-            Brand stories, buyer guides, and the small operational details
-            most first-time buyers miss. Written by the Vamar team, not by a
-            content farm.
+            {dict.intro}
           </p>
         </RevealOnView>
 
@@ -52,7 +58,7 @@ export function ResourcesListing() {
               )}
               aria-pressed={activeTag === null}
             >
-              All
+              {dict.allTagsLabel}
             </button>
             {ALL_TAGS.map((tag) => (
               <button
@@ -80,7 +86,7 @@ export function ResourcesListing() {
               from={i % 3 === 0 ? "left" : i % 3 === 1 ? "up" : "right"}
               delay={(i % 3) * 0.05}
             >
-              <ArticleCard article={article} />
+              <ArticleCard article={article} locale={locale} readMore={dict.readMore} />
             </RevealOnView>
           ))}
         </div>
@@ -89,11 +95,19 @@ export function ResourcesListing() {
   );
 }
 
-function ArticleCard({ article }: { article: Article }) {
+function ArticleCard({
+  article,
+  locale,
+  readMore,
+}: {
+  article: Article;
+  locale: Locale;
+  readMore: string;
+}) {
   const { hero, title, eyebrow, excerpt, date, readTime, slug } = article;
 
   return (
-    <Link href={`/resources/${slug}`} className="group block">
+    <Link href={`/${locale}/resources/${slug}`} className="group block">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--bg-elev)]">
         <Image
           src={hero}
@@ -107,7 +121,7 @@ function ArticleCard({ article }: { article: Article }) {
 
       <div className="mt-4 flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-[var(--ink-soft)]">
         <span>{eyebrow}</span>
-        <span aria-hidden>·</span>
+        <span aria-hidden>&middot;</span>
         <span>{readTime}</span>
       </div>
 

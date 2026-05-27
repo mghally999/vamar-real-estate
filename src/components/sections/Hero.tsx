@@ -6,12 +6,12 @@ import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger, registerGsap } from "@/lib/gsap";
 import styles from "./Hero.module.css";
 import { PillButton } from "@/components/primitives/PillButton";
+import type { Dictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n-config";
 
-// NB: brief's JSX uses `import back from "/public/img/hero/back...webp"` static
-// imports. That syntax is invalid in Next.js — you can't import from /public/.
-// Files in public/ are served by string src on <Image />. Using string paths.
+type Dict = Dictionary["hero"];
 
-export function Hero() {
+export function Hero({ dict, locale }: { dict: Dict; locale: Locale }) {
   const root = useRef<HTMLElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
   const houseBg = useRef<HTMLDivElement>(null);
@@ -27,11 +27,10 @@ export function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
 
-  // Phase 2 — scrub timeline ----------------------------------------------
   useGSAP(
     () => {
       const reduce = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
+        "(prefers-reduced-motion: reduce)"
       ).matches;
       if (reduce || !root.current) return;
 
@@ -41,7 +40,7 @@ export function Hero() {
       tl.to(
         [houseBg.current, houseFg.current],
         { y: "-40%", scale: 1.3, duration: 1, ease: "none" },
-        0,
+        0
       );
       tl.to(smokeTop.current, { y: "0%", duration: 1, ease: "none" }, 0);
       tl.to(cloudL.current, { x: "-15%", duration: 1, ease: "none" }, 0);
@@ -49,7 +48,7 @@ export function Hero() {
       tl.to(
         content.current,
         { y: "20%", scale: 0.9, duration: 1, ease: "none" },
-        0,
+        0
       );
       tl.to(content.current, { opacity: 0, duration: 0.2, ease: "none" }, 0);
       tl.to(logo.current, { opacity: 1, duration: 0.01 }, 0.1);
@@ -57,9 +56,13 @@ export function Hero() {
       tl.to(
         composite.current,
         { opacity: 1, duration: 0.1, ease: "none" },
-        0.3,
+        0.3
       );
-      tl.to(houseBg.current, { opacity: 0, duration: 0.1, ease: "none" }, 0.3);
+      tl.to(
+        houseBg.current,
+        { opacity: 0, duration: 0.1, ease: "none" },
+        0.3
+      );
 
       ScrollTrigger.create({
         trigger: root.current,
@@ -70,14 +73,13 @@ export function Hero() {
         invalidateOnRefresh: true,
       });
     },
-    { scope: root },
+    { scope: root }
   );
 
-  // Phase 2 — intro timeline ----------------------------------------------
   useGSAP(
     () => {
       const reduce = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
+        "(prefers-reduced-motion: reduce)"
       ).matches;
       if (reduce || !root.current) return;
 
@@ -87,7 +89,7 @@ export function Hero() {
         h1.innerHTML = words
           .map(
             (w) =>
-              `<span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span class="word" style="display:inline-block;will-change:transform">${w}</span></span>`,
+              `<span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span class="word" style="display:inline-block;will-change:transform">${w}</span></span>`
           )
           .join(" ");
         h1.dataset.split = "1";
@@ -100,32 +102,38 @@ export function Hero() {
           wordEls,
           { yPercent: 100 },
           { yPercent: 0, duration: 2, stagger: 0.1, ease: "expo.out" },
-          0,
+          0
         );
       }
       intro.fromTo(
         [textRef.current, actionsRef.current],
         { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power3.out" },
-        0.4,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.06,
+          ease: "power3.out",
+        },
+        0.4
       );
       intro.fromTo(
         backRef.current,
         { scale: 1.1 },
         { scale: 1, duration: 5, ease: "expo.out" },
-        0,
+        0
       );
       intro.fromTo(
         cloudL.current,
         { y: "50%" },
         { y: "0%", duration: 3, ease: "expo.out" },
-        0,
+        0
       );
       intro.fromTo(
         cloudR.current,
         { y: "100%" },
         { y: "0%", duration: 4, ease: "expo.out" },
-        0.1,
+        0.1
       );
 
       const houseImgs = [
@@ -136,22 +144,22 @@ export function Hero() {
         houseImgs,
         { opacity: 0 },
         { opacity: 1, duration: 0.6 },
-        0.2,
+        0.2
       );
       intro.fromTo(
         houseImgs,
         { y: "10%" },
         { y: "0%", duration: 3, ease: "expo.out" },
-        0.2,
+        0.2
       );
 
       const t = setTimeout(
         () => requestAnimationFrame(() => intro.play()),
-        200,
+        200
       );
       return () => clearTimeout(t);
     },
-    { scope: root },
+    { scope: root }
   );
 
   return (
@@ -215,7 +223,10 @@ export function Hero() {
           </div>
 
           <div ref={logo} className={styles.logo}>
-            <FindWordmarkStrokes />
+            <VamarWordmarkStrokes
+              line1={dict.wordmarkLine1}
+              line2={dict.wordmarkLine2}
+            />
           </div>
 
           <div ref={smokeTop} className={styles.smoke}>
@@ -233,19 +244,16 @@ export function Hero() {
         <div ref={content} className={styles.content}>
           <div>
             <div ref={titleRef} className={styles.title}>
-              <h1>Find What Moves You</h1>
+              <h1>{dict.title}</h1>
             </div>
             <div ref={textRef} className={styles.text}>
               <p>
-                Expert agents. Real guidance.{" "}
-                <span className={styles.em}>
-                  A clear path to find what&rsquo;s next.
-                </span>
+                {dict.subtitle}
               </p>
             </div>
             <div ref={actionsRef} className={styles.actions}>
-              <PillButton href="/search" variant="dark" arrow="right">
-                Find Properties
+              <PillButton href={`/${locale}/search`} variant="dark" arrow="right">
+                {dict.primaryCta}
               </PillButton>
             </div>
           </div>
@@ -271,15 +279,13 @@ export function Hero() {
   );
 }
 
-// Vamar Real Estate wordmark — rendered as SVG <text> so we don't need
-// custom path outlines for each letterform. Same viewBox as the mask SVG
-// (0 0 977 423) so the composite stays aligned.
-//
-// NB: the Phase 2 scrub timeline queries `path` elements inside .logo and
-// drives stroke-dasharray. With <text> there are no <path>s, so that tween
-// no-ops harmlessly — the wordmark still fades in/out via the .logo opacity
-// tweens. Path-based stroke draw can be re-added later if wanted.
-function FindWordmarkStrokes() {
+function VamarWordmarkStrokes({
+  line1,
+  line2,
+}: {
+  line1: string;
+  line2: string;
+}) {
   return (
     <svg viewBox="0 0 977 423" xmlns="http://www.w3.org/2000/svg">
       <g
@@ -296,7 +302,7 @@ function FindWordmarkStrokes() {
           textAnchor="middle"
           letterSpacing="-12"
         >
-          Vamar
+          {line1}
         </text>
         <text
           x="488.5"
@@ -306,7 +312,7 @@ function FindWordmarkStrokes() {
           textAnchor="middle"
           fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif"
         >
-          Real Estate
+          {line2}
         </text>
       </g>
     </svg>

@@ -4,8 +4,18 @@ import Image from "next/image";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
+import type { Dictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n-config";
 
-export function AgentsPitch() {
+type Dict = Dictionary["ownersPitch"];
+
+export function AgentsPitch({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   return (
     <section className="relative overflow-hidden bg-[var(--ink)] text-[var(--bg)]">
       <div className="absolute inset-0">
@@ -18,44 +28,47 @@ export function AgentsPitch() {
           className="object-cover opacity-30"
           quality={80}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-transparent rtl:bg-gradient-to-l" />
       </div>
 
       <div className="container-x relative py-28 sm:py-40 grid grid-cols-12 gap-10">
         <div className="col-span-12 lg:col-span-7">
           <RevealOnView>
-            <div className="eyebrow mb-6 text-[var(--bg)]/65">For agents</div>
+            <div className="eyebrow mb-6 text-[var(--bg)]/65">
+              {dict.eyebrow}
+            </div>
             <h2
               className="display display-tight"
               style={{ fontSize: "clamp(2.75rem, 7vw, 6rem)" }}
             >
-              Don&apos;t rent
+              {dict.title[0]}
               <br />
-              your career.
+              {dict.title[1]}
             </h2>
             <p className="mt-8 max-w-[44ch] text-lg text-[var(--bg)]/65 leading-relaxed">
-              At Vamar, you own the relationships you build. Top-tier splits,
-              real coaching, a leadership team that&apos;s closed more deals than
-              they&apos;ve given speeches. Bring the work, keep the upside.
+              {dict.body}
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <PillButton href="/apply" variant="outline" className="!bg-white !text-[var(--ink)] !border-white hover:!bg-transparent hover:!text-white">
-                Join Vamar
+              <PillButton
+                href={`/${locale}/apply`}
+                variant="outline"
+                className="!bg-white !text-[var(--ink)] !border-white hover:!bg-transparent hover:!text-white"
+              >
+                {dict.ctaPrimary}
               </PillButton>
-              <PillButton href="/about" variant="outline" className="!border-white !text-white hover:!bg-white hover:!text-[var(--ink)]">
-                Why Vamar
+              <PillButton
+                href={`/${locale}/about`}
+                variant="outline"
+                className="!border-white !text-white hover:!bg-white hover:!text-[var(--ink)]"
+              >
+                {dict.ctaSecondary}
               </PillButton>
             </div>
           </RevealOnView>
         </div>
 
         <div className="col-span-12 lg:col-span-5 lg:pt-12 grid grid-cols-2 gap-6 self-end">
-          {[
-            { k: "85/15", v: "Industry-leading splits" },
-            { k: "AED 0", v: "Desk & tech fees" },
-            { k: "1:1", v: "Coaching, every week" },
-            { k: "24h", v: "Lead response SLA" },
-          ].map((stat) => (
+          {dict.stats.map((stat) => (
             <RevealOnView
               key={stat.k}
               className="border-t border-white/15 pt-5"

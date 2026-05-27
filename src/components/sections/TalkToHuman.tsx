@@ -6,8 +6,18 @@ import { useGSAP } from "@gsap/react";
 import { gsap, registerGsap } from "@/lib/gsap";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
+import type { Dictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n-config";
 
-export function TalkToHuman() {
+type Dict = Dictionary["talkToHuman"];
+
+export function TalkToHuman({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -20,7 +30,9 @@ export function TalkToHuman() {
         "(prefers-reduced-motion: reduce)"
       ).matches;
       const img = section.querySelector(".tth-img") as HTMLElement | null;
-      const heading = section.querySelector(".tth-heading") as HTMLElement | null;
+      const heading = section.querySelector(
+        ".tth-heading"
+      ) as HTMLElement | null;
       const sub = section.querySelector(".tth-sub") as HTMLElement | null;
 
       if (reduce || !img || !heading) {
@@ -77,7 +89,7 @@ export function TalkToHuman() {
     <section
       ref={ref}
       className="relative overflow-hidden bg-[var(--ink)] text-[var(--bg)]"
-      aria-label="Talk to a real human"
+      aria-label={dict.title.join(" ")}
     >
       <div className="tth-img absolute inset-0 will-change-transform">
         <Image
@@ -96,30 +108,29 @@ export function TalkToHuman() {
         <div className="col-span-12 lg:col-span-9">
           <div className="tth-heading">
             <div className="eyebrow mb-6 text-[var(--bg)]/65">
-              No bots. No forms-into-the-void.
+              {dict.eyebrowSmall}
             </div>
             <h2
               className="display display-tight max-w-[18ch]"
               style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
             >
-              Talk to a<br />
-              <span className="text-[var(--bg)]/55">Real Human.</span>
+              {dict.title[0]}
+              <br />
+              <span className="text-[var(--bg)]/55">{dict.title[1]}</span>
             </h2>
           </div>
         </div>
         <div className="col-span-12 lg:col-span-3 lg:pt-8">
           <p className="tth-sub max-w-[36ch] text-[var(--bg)]/65 leading-relaxed mb-8">
-            A senior agent picks up — same business day. We&apos;ll listen first,
-            send nothing without permission, and tell you when we&apos;re not the
-            right fit.
+            {dict.body}
           </p>
           <div className="flex flex-wrap gap-3">
             <PillButton
-              href="/apply"
+              href={`/${locale}/apply`}
               variant="outline"
               className="!bg-white !text-[var(--ink)] !border-white hover:!bg-transparent hover:!text-white"
             >
-              Start a conversation
+              {dict.cta}
             </PillButton>
           </div>
         </div>

@@ -5,8 +5,12 @@ import { ScrubWords } from "@/components/primitives/ScrubWords";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
+import type { Dictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n-config";
 
-export function LifeChanging() {
+type Dict = Dictionary["lifeChanging"];
+
+export function LifeChanging({ dict, locale }: { dict: Dict; locale: Locale }) {
   return (
     <section className="relative z-10 bg-[var(--bg)] py-24 sm:py-40">
       <div className="container-x grid grid-cols-12 gap-10">
@@ -21,7 +25,6 @@ export function LifeChanging() {
                 className="object-cover"
                 quality={85}
               />
-              {/* Vamar brand veil — navy gradient bottom-up, plus brass top accent */}
               <div
                 aria-hidden
                 className="absolute inset-0 bg-gradient-to-t from-[#162842]/70 via-[#162842]/25 to-transparent"
@@ -32,34 +35,35 @@ export function LifeChanging() {
               />
             </div>
             <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[var(--ink-soft)]">
-              <span>Where you live</span>
-              <span>changes everything</span>
+              <span>{dict.imageCaption1}</span>
+              <span>{dict.imageCaption2}</span>
             </div>
           </RevealOnView>
         </div>
 
-        <div className="col-span-12 lg:col-span-7 lg:pl-12 flex flex-col gap-12">
+        <div className="col-span-12 lg:col-span-7 lg:ps-12 flex flex-col gap-12">
           <RevealOnView>
-            <div className="eyebrow mb-6">A bigger search</div>
+            <div className="eyebrow mb-6">{dict.eyebrow}</div>
             <h2 className="h1 max-w-[18ch]">
-              Life-changing
+              {dict.title[0]}
               <br />
-              <span data-faint>doesn&apos;t come</span> from
+              <span data-faint>{dict.title[1]}</span>
               <br />
-              the listing.
+              {dict.title[2]}
             </h2>
           </RevealOnView>
 
-          <ScrubWords className="text-2xl sm:text-3xl leading-[1.25] max-w-[34ch] tracking-[-0.01em] font-medium">
-            {`You don't find a home by walking through houses. You find one by understanding what you're walking toward — the morning routine, the school run, the dinner on Sunday, the version of yourself that gets to live there next.`}
-          </ScrubWords>
-
-          <ScrubWords className="text-2xl sm:text-3xl leading-[1.25] max-w-[34ch] tracking-[-0.01em] font-medium">
-            {`Vamar pairs you with an agent who asks the right questions before they show you a single property. That changes everything that comes after.`}
-          </ScrubWords>
+          {dict.paragraphs.map((p, i) => (
+            <ScrubWords
+              key={i}
+              className="text-2xl sm:text-3xl leading-[1.25] max-w-[34ch] tracking-[-0.01em] font-medium"
+            >
+              {p}
+            </ScrubWords>
+          ))}
 
           <div className="pt-2">
-            <PillButton href="/agents">Meet the agents</PillButton>
+            <PillButton href={`/${locale}/agents`}>{dict.cta}</PillButton>
           </div>
         </div>
       </div>

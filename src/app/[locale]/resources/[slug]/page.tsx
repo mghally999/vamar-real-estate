@@ -5,15 +5,19 @@ import Link from "next/link";
 import { ARTICLES, getArticleBySlug } from "@/data/resources";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
+import { isLocale } from "@/lib/i18n-config";
+import { getDictionary } from "@/lib/getDictionary";
 
 export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
 }
 
-export async function generateMetadata(
-  props: PageProps<"/resources/[slug]">
-): Promise<Metadata> {
-  const { slug } = await props.params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return { title: "Article" };
   return {
@@ -22,10 +26,14 @@ export async function generateMetadata(
   };
 }
 
-export default async function ArticlePage(
-  props: PageProps<"/resources/[slug]">
-) {
-  const { slug } = await props.params;
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = await getDictionary(locale);
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
@@ -37,14 +45,14 @@ export default async function ArticlePage(
         <RevealOnView className="max-w-[64ch] mx-auto">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-[var(--ink-soft)] mb-6">
             <Link
-              href="/resources"
+              href={`/${locale}/resources`}
               className="hover:text-[var(--ink)] transition-colors"
             >
-              Resources
+              {dict.resources.eyebrow}
             </Link>
-            <span aria-hidden>·</span>
+            <span aria-hidden>&middot;</span>
             <span>{article.eyebrow}</span>
-            <span aria-hidden>·</span>
+            <span aria-hidden>&middot;</span>
             <span>{article.readTime}</span>
           </div>
 
@@ -96,10 +104,7 @@ export default async function ArticlePage(
               )}
               <div className="flex flex-col gap-5">
                 {section.paragraphs.map((p, j) => (
-                  <p
-                    key={j}
-                    className="text-lg leading-[1.65] text-[var(--ink)]"
-                  >
+                  <p key={j} className="text-lg leading-[1.65] text-[var(--ink)]">
                     {p}
                   </p>
                 ))}
@@ -111,14 +116,13 @@ export default async function ArticlePage(
         <RevealOnView className="mt-20 max-w-[64ch] mx-auto border-t border-[var(--line)] pt-10">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <div className="eyebrow mb-2">Want a second opinion?</div>
+              <div className="eyebrow mb-2">{dict.contact.eyebrow}</div>
               <p className="text-lg max-w-[40ch]">
-                Talk to a senior Vamar agent. No script, no chatbot — same
-                business day.
+                {dict.talkToHuman.cta}
               </p>
             </div>
-            <PillButton href="/apply" variant="dark" arrow="right">
-              Start a conversation
+            <PillButton href={`/${locale}/apply`} variant="dark" arrow="right">
+              {dict.talkToHuman.cta}
             </PillButton>
           </div>
         </RevealOnView>
@@ -128,14 +132,14 @@ export default async function ArticlePage(
             <RevealOnView>
               <div className="flex items-end justify-between gap-6 mb-10">
                 <div>
-                  <div className="eyebrow mb-3">Keep reading</div>
-                  <h2 className="h2 max-w-[18ch]">More from the desk.</h2>
+                  <div className="eyebrow mb-3">{dict.resources.eyebrow}</div>
+                  <h2 className="h2 max-w-[18ch]">{dict.resources.readMore}</h2>
                 </div>
                 <Link
-                  href="/resources"
+                  href={`/${locale}/resources`}
                   className="hidden sm:inline text-sm tracking-[-0.01em] text-[var(--ink-soft)] hover:text-[var(--ink)] transition-colors"
                 >
-                  All resources →
+                  {dict.resources.eyebrow} &rarr;
                 </Link>
               </div>
             </RevealOnView>
@@ -147,7 +151,10 @@ export default async function ArticlePage(
                   from={i === 0 ? "left" : i === 1 ? "up" : "right"}
                   delay={i * 0.05}
                 >
-                  <Link href={`/resources/${a.slug}`} className="group block">
+                  <Link
+                    href={`/${locale}/resources/${a.slug}`}
+                    className="group block"
+                  >
                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--bg-elev)]">
                       <Image
                         src={a.hero}
@@ -159,7 +166,7 @@ export default async function ArticlePage(
                       />
                     </div>
                     <div className="mt-4 text-xs uppercase tracking-[0.16em] text-[var(--ink-soft)]">
-                      {a.eyebrow} · {a.readTime}
+                      {a.eyebrow} &middot; {a.readTime}
                     </div>
                     <h3 className="mt-2 text-xl font-semibold tracking-tight leading-[1.2]">
                       {a.title}

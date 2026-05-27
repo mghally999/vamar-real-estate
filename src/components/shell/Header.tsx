@@ -3,21 +3,30 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PillButton } from "@/components/primitives/PillButton";
 import { VamarLogo } from "@/components/primitives/VamarLogo";
+import { LanguageSwitcher } from "@/components/shell/LanguageSwitcher";
+import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { cn } from "@/lib/cn";
+import type { Locale } from "@/lib/i18n-config";
+import type { Dictionary } from "@/lib/getDictionary";
 
-const NAV_LINKS = [
-  { href: "/search", label: "Search" },
-  { href: "/agents", label: "Agents" },
-  { href: "/paperwork", label: "Paperwork" },
-  { href: "/resources", label: "Resources" },
-  { href: "/about", label: "About" },
-];
+type Dict = Dictionary["nav"];
 
-export function Header() {
+function navLinks(locale: Locale, dict: Dict) {
+  return [
+    { href: `/${locale}/search`, label: dict.search },
+    { href: `/${locale}/agents`, label: dict.team },
+    { href: `/${locale}/paperwork`, label: dict.paperwork },
+    { href: `/${locale}/resources`, label: dict.resources },
+    { href: `/${locale}/about`, label: dict.about },
+  ];
+}
+
+export function Header({ locale, dict }: { locale: Locale; dict: Dict }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = navLinks(locale, dict);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -44,7 +53,7 @@ export function Header() {
     >
       <div className="container-x flex h-16 items-center justify-between sm:h-20">
         <Link
-          href="/"
+          href={`/${locale}`}
           className="flex items-center"
           aria-label="Vamar Real Estate — Home"
         >
@@ -54,34 +63,33 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
-          {NAV_LINKS.map((l) => (
+        <nav
+          className="hidden md:flex items-center gap-8"
+          aria-label={dict.primary}
+        >
+          {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm tracking-[-0.01em] text-[#151717] hover:text-[#151717]/60 transition-colors"
+              className="text-sm tracking-[-0.01em] text-[var(--ink)] hover:text-[var(--ink)]/60 transition-colors"
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center">
-          <PillButton
-            href="/sign-in"
-            variant="dark"
-            arrow={false}
-            className="!py-2.5 !px-6 text-sm"
-          >
-            Sign In
-          </PillButton>
+        <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
+          <LanguageSwitcher current={locale} />
         </div>
 
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <LanguageSwitcher current={locale} />
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)]"
-            aria-label="Open menu"
+            aria-label={open ? dict.closeMenu : dict.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
@@ -90,7 +98,11 @@ export function Header() {
               <motion.line
                 x1="0"
                 x2="18"
-                animate={{ y1: open ? 6 : 0, y2: open ? 6 : 0, rotate: open ? 45 : 0 }}
+                animate={{
+                  y1: open ? 6 : 0,
+                  y2: open ? 6 : 0,
+                  rotate: open ? 45 : 0,
+                }}
                 style={{ originX: 0.5, originY: 0.5 }}
                 stroke="currentColor"
                 strokeWidth="1.5"
@@ -111,7 +123,11 @@ export function Header() {
                 x2="18"
                 y1="12"
                 y2="12"
-                animate={{ y1: open ? 6 : 12, y2: open ? 6 : 12, rotate: open ? -45 : 0 }}
+                animate={{
+                  y1: open ? 6 : 12,
+                  y2: open ? 6 : 12,
+                  rotate: open ? -45 : 0,
+                }}
                 style={{ originX: 0.5, originY: 0.5 }}
                 stroke="currentColor"
                 strokeWidth="1.5"
@@ -133,9 +149,9 @@ export function Header() {
           >
             <nav
               className="container-x flex flex-col gap-2 pt-8 pb-12"
-              aria-label="Mobile primary"
+              aria-label={dict.mobilePrimary}
             >
-              {NAV_LINKS.map((l, i) => (
+              {links.map((l, i) => (
                 <motion.div
                   key={l.href}
                   initial={{ opacity: 0, y: 12 }}
@@ -151,16 +167,6 @@ export function Header() {
                   </Link>
                 </motion.div>
               ))}
-              <div className="pt-8">
-                <PillButton
-                  href="/sign-in"
-                  variant="dark"
-                  arrow={false}
-                  className="w-full !justify-center"
-                >
-                  Sign In
-                </PillButton>
-              </div>
             </nav>
           </motion.div>
         )}
