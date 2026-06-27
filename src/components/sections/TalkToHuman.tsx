@@ -7,16 +7,13 @@ import { gsap, registerGsap } from "@/lib/gsap";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["talkToHuman"];
 
 export function TalkToHuman({
   dict,
-  locale,
 }: {
   dict: Dict;
-  locale: Locale;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -88,7 +85,7 @@ export function TalkToHuman({
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[var(--ink)] text-[var(--bg)]"
+      className="relative overflow-hidden bg-[var(--feature-bg)] text-[var(--feature-ink)]"
       aria-label={dict.title.join(" ")}
     >
       <div className="tth-img absolute inset-0 will-change-transform">
@@ -107,7 +104,7 @@ export function TalkToHuman({
       <div className="container-x relative py-28 sm:py-44 grid grid-cols-12 gap-10">
         <div className="col-span-12 lg:col-span-9">
           <div className="tth-heading">
-            <div className="eyebrow mb-6 text-[var(--bg)]/65">
+            <div className="eyebrow mb-6 text-[var(--feature-ink)]/65">
               {dict.eyebrowSmall}
             </div>
             <h2
@@ -116,19 +113,19 @@ export function TalkToHuman({
             >
               {dict.title[0]}
               <br />
-              <span className="text-[var(--bg)]/55">{dict.title[1]}</span>
+              <span className="text-[var(--feature-ink)]/55">{dict.title[1]}</span>
             </h2>
           </div>
         </div>
         <div className="col-span-12 lg:col-span-3 lg:pt-8">
-          <p className="tth-sub max-w-[36ch] text-[var(--bg)]/65 leading-relaxed mb-8">
+          <p className="tth-sub max-w-[36ch] text-[var(--feature-ink)]/65 leading-relaxed mb-8">
             {dict.body}
           </p>
           <div className="flex flex-wrap gap-3">
             <PillButton
-              href={`/${locale}/apply`}
+              href={`/apply`}
               variant="outline"
-              className="!bg-white !text-[var(--ink)] !border-white hover:!bg-transparent hover:!text-white"
+              className="!bg-white !text-[var(--feature-bg)] !border-white hover:!bg-transparent hover:!text-white"
             >
               {dict.cta}
             </PillButton>

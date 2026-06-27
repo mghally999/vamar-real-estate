@@ -6,11 +6,10 @@ import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["lifeChanging"];
 
-export function LifeChanging({ dict, locale }: { dict: Dict; locale: Locale }) {
+export function LifeChanging({ dict }: { dict: Dict }) {
   return (
     <section className="relative z-10 bg-[var(--bg)] py-24 sm:py-40">
       <div className="container-x grid grid-cols-12 gap-10">
@@ -34,7 +33,7 @@ export function LifeChanging({ dict, locale }: { dict: Dict; locale: Locale }) {
                 className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#162842]/35 to-transparent"
               />
             </div>
-            <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[var(--ink-soft)]">
+            <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between text-xs uppercase tracking-[0.18em] text-[var(--ink-soft)]">
               <span>{dict.imageCaption1}</span>
               <span>{dict.imageCaption2}</span>
             </div>
@@ -63,7 +62,7 @@ export function LifeChanging({ dict, locale }: { dict: Dict; locale: Locale }) {
           ))}
 
           <div className="pt-2">
-            <PillButton href={`/${locale}/agents`}>{dict.cta}</PillButton>
+            <PillButton href={`/agents`}>{dict.cta}</PillButton>
           </div>
         </div>
       </div>

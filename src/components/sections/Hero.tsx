@@ -7,11 +7,10 @@ import { gsap, ScrollTrigger, registerGsap } from "@/lib/gsap";
 import styles from "./Hero.module.css";
 import { PillButton } from "@/components/primitives/PillButton";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["hero"];
 
-export function Hero({ dict, locale }: { dict: Dict; locale: Locale }) {
+export function Hero({ dict }: { dict: Dict }) {
   const root = useRef<HTMLElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
   const houseBg = useRef<HTMLDivElement>(null);
@@ -252,7 +251,7 @@ export function Hero({ dict, locale }: { dict: Dict; locale: Locale }) {
               </p>
             </div>
             <div ref={actionsRef} className={styles.actions}>
-              <PillButton href={`/${locale}/search`} variant="dark" arrow="right">
+              <PillButton href={`/search`} variant="dark" arrow="right">
                 {dict.primaryCta}
               </PillButton>
             </div>

@@ -24,7 +24,7 @@
 .top {
   position: sticky;
   top: 0;
-  height: 120vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -46,31 +46,29 @@
   object-position: center;
 }
 
-/* HOUSE — fixed-aspect container, image cover-top so only roofline+upper floors show */
+/* HOUSE — full-width building anchored in the lower hero (like FIND), filling
+   edge-to-edge with cover so it reads large and crisp instead of letterboxing. */
 .house {
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100vw;
-  /* max-width: 56rem; */
-  height: 100vh;
+  top: 50vh;
+  left: 0;
+  right: 0;
+  height: 60vh;
   z-index: 2;
   transform-origin: bottom center;
   pointer-events: none;
 }
 @media (min-width: 1024px) {
   .house {
-    width: 48vw;
-    max-width: 100rem;
-    height: 80vh;
+    top: 48vh;
+    height: 70vh;
   }
 }
 .house img {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
   display: block;
 }
 
@@ -102,13 +100,14 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 45rem;
+  /* Fog band at the base of the hero — light enough to frame, not bury, the building */
+  height: 60vw;
   z-index: 4;
   pointer-events: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .smoke {
-    height: 62rem;
+    height: 24vw;
   }
 }
 .top .smoke {
@@ -124,37 +123,56 @@
 .clouds {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 3;
   pointer-events: none;
 }
 .cloud {
   position: absolute;
 }
+/* Cloud size/position copied from FIND (their rem on a viewport-scaled root →
+   vw here): large, far off-screen, object-fit:cover for a soft cloud field. */
 .cloud:first-child {
-  top: 28vh;
-  left: -8vw;
-  width: 45vw;
+  top: 89.9vw;
+  left: -152.5vw;
+  width: 187.2vw;
+  height: 79.5vw;
 }
 .cloud:last-child {
-  top: 32vh;
-  right: -8vw;
-  width: 40vw;
+  top: 99vw;
+  right: -109.9vw;
+  width: 148.5vw;
+  height: 62.9vw;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .cloud:first-child {
-    top: 24vh;
-    left: -6vw;
-    width: 38vw;
+    top: 25%;
+    left: -17.56vw;
+    width: 58.5vw;
+    height: 24.8vw;
   }
   .cloud:last-child {
-    top: 28vh;
-    right: -6vw;
-    width: 32vw;
+    top: 20%;
+    right: -17.56vw;
+    width: 48.75vw;
+    height: 20.68vw;
+  }
+}
+@media (min-width: 1920px) {
+  .cloud:first-child {
+    left: -337.2px;
+    width: 1124px;
+    height: 477px;
+  }
+  .cloud:last-child {
+    right: -337.2px;
+    width: 936px;
+    height: 397px;
   }
 }
 .cloud img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -235,12 +253,11 @@
   text-align: center;
   color: #151717;
   margin: 0;
-  text-wrap: balance;
   max-width: 92vw;
 }
 
 .text {
-  margin: 1.5rem 0 0;
+  margin: 1.5rem auto 0;
   font-weight: 500;
   font-size: clamp(1rem, 1.4vw, 1.3rem);
   line-height: 1.5;
@@ -259,81 +276,45 @@
   justify-content: center;
 }
 
+/* Mobile: bound the content column to the viewport so the headline + subtitle
+   wrap instead of overflowing off the right edge. */
+@media (max-width: 767px) {
+  .content {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  /* Definite rem max-widths centred directly on the headline + subtitle. (A
+     percentage/auto-width parent makes % max-width resolve to none, so the
+     constraint has to be a definite length.) */
+  .title h1 {
+    font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+    max-width: 18rem;
+    margin-inline: auto;
+    overflow-wrap: break-word;
+  }
+  .text {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+}
+
 .bottom {
   position: relative;
 }
 
-/* line 65: house fills the ENTIRE viewport */
-.house {
-  width: 100vw;
-  height: 100vh;
-}
+/* smoke fog — matches FIND (45rem mobile / 62rem desktop, handled above) */
 
-/* line 75 (desktop): still 80% of viewport */
-.house {
-  width: 48vw;
-  height: 80vh;
-}
-
-/* line 113: smoke is 45rem (720px) tall — that's your white fog */
-.smoke {
-  height: 45rem;
-}
-
-/* line 11: pulls next section UP by 100vh — the overlap */
+/* pulls next section UP by 100vh — the overlap */
 .root {
   margin-bottom: -100vh;
 }
 
-/* line 196: full-viewport white fade — more fog */
+/* white fade at the very bottom — thin, just to blend into the page */
 .overlay {
-  height: 100vh;
+  height: 12vw;
 }
-
-.cloud:first-child {
-  top: 18vh; /* was 5vh */
-  left: -12vw;
-  width: 50vw;
-}
-.cloud:last-child {
-  top: 22vh; /* was 8vh */
-  right: -12vw;
-  width: 45vw;
-}
-
-@media (min-width: 1024px) {
-  .cloud:first-child {
-    top: 14vh;
-    left: -8vw;
-    width: 42vw;
-  }
-  .cloud:last-child {
-    top: 18vh;
-    right: -8vw;
-    width: 36vw;
-  }
-}
-
-.cloud:first-child {
-  top: 28vh; /* was 5vh */
-  left: -8vw;
-  width: 45vw;
-}
-.cloud:last-child {
-  top: 32vh; /* was 8vh */
-  right: -8vw;
-  width: 40vw;
-}
-
-@media (min-width: 1024px) {
-  .cloud:first-child {
-    top: 24vh; /* was 3vh */
-    left: -6vw;
-    width: 38vw;
-  }
-  .cloud:last-child {
-    top: 28vh; /* was 6vh */
-    right: -6vw;
-    width: 32vw;
+@media (min-width: 768px) {
+  .overlay {
+    height: 8vw;
   }
 }

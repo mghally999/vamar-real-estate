@@ -1,11 +1,5 @@
-import type { Locale } from "./i18n-config";
+import en from "../../messages/en.json";
 
-const dictionaries = {
-  en: () => import("../../messages/en.json").then((m) => m.default),
-  ar: () => import("../../messages/ar.json").then((m) => m.default),
-};
+export const getDictionary = async () => en;
 
-export const getDictionary = async (locale: Locale) =>
-  (dictionaries[locale] ?? dictionaries.en)();
-
-export type Dictionary = Awaited<ReturnType<typeof dictionaries.en>>;
+export type Dictionary = typeof en;

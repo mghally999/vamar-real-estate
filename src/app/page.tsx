@@ -1,6 +1,4 @@
 import { getDictionary } from "@/lib/getDictionary";
-import { isLocale } from "@/lib/i18n-config";
-import { notFound } from "next/navigation";
 import { Hero } from "@/components/sections/Hero";
 import { LifeChanging } from "@/components/sections/LifeChanging";
 import { ChevronStrip } from "@/components/sections/ChevronStrip";
@@ -15,30 +13,24 @@ import { Privacy } from "@/components/sections/Privacy";
 import { Contact } from "@/components/sections/Contact";
 import { BigVamarSignoff } from "@/components/sections/BigVamarSignoff";
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = await getDictionary(locale);
+export default async function Home() {
+  const dict = await getDictionary();
 
   return (
     <>
-      <Hero dict={dict.hero} locale={locale} />
-      <LifeChanging dict={dict.lifeChanging} locale={locale} />
+      <Hero dict={dict.hero} />
+      <LifeChanging dict={dict.lifeChanging} />
       <ChevronStrip dict={dict.chevronStrip} />
       <HeavyAssets dict={dict.heavyAssets} />
       <RewiredSteps dict={dict.rewiredSteps} />
-      <Founders dict={dict.founders} locale={locale} />
+      <Founders dict={dict.founders} />
       <Testimonials dict={dict.testimonials} founders={dict.founders.members} />
-      <AgentsPitch dict={dict.ownersPitch} locale={locale} />
-      <TalkToHuman dict={dict.talkToHuman} locale={locale} />
+      <AgentsPitch dict={dict.ownersPitch} />
+      <TalkToHuman dict={dict.talkToHuman} />
       <WhyAccordion dict={dict.whyAccordion} />
       <Privacy dict={dict.privacy} />
       <Contact dict={dict.contact} />
-      <BigVamarSignoff dict={dict.signoff} locale={locale} />
+      <BigVamarSignoff dict={dict.signoff} />
     </>
   );
 }

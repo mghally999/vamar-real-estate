@@ -7,7 +7,6 @@ import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { ARTICLES, type Article } from "@/data/resources";
 import { cn } from "@/lib/cn";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["resources"];
 
@@ -15,10 +14,8 @@ const ALL_TAGS = Array.from(new Set(ARTICLES.flatMap((a) => a.tags))).sort();
 
 export function ResourcesListing({
   dict,
-  locale,
 }: {
   dict: Dict;
-  locale: Locale;
 }) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
@@ -86,7 +83,7 @@ export function ResourcesListing({
               from={i % 3 === 0 ? "left" : i % 3 === 1 ? "up" : "right"}
               delay={(i % 3) * 0.05}
             >
-              <ArticleCard article={article} locale={locale} readMore={dict.readMore} />
+              <ArticleCard article={article} readMore={dict.readMore} />
             </RevealOnView>
           ))}
         </div>
@@ -97,17 +94,15 @@ export function ResourcesListing({
 
 function ArticleCard({
   article,
-  locale,
   readMore,
 }: {
   article: Article;
-  locale: Locale;
   readMore: string;
 }) {
   const { hero, title, eyebrow, excerpt, date, readTime, slug } = article;
 
   return (
-    <Link href={`/${locale}/resources/${slug}`} className="group block">
+    <Link href={`/resources/${slug}`} className="group block">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--bg-elev)]">
         <Image
           src={hero}

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["team"];
 type FoundersDict = Dictionary["founders"];
@@ -13,11 +12,9 @@ type FoundersDict = Dictionary["founders"];
 export function AgentsListing({
   dict,
   founders,
-  locale,
 }: {
   dict: Dict;
   founders: FoundersDict;
-  locale: Locale;
 }) {
   const [q, setQ] = useState("");
   const members = founders.members;
@@ -81,7 +78,7 @@ export function AgentsListing({
               }}
             >
               <Link
-                href={`/${locale}/agents/${m.slug}`}
+                href={`/agents/${m.slug}`}
                 className="group block"
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[var(--accent)]/20 grid place-items-center">

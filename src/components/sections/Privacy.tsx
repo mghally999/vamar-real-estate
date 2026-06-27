@@ -55,7 +55,7 @@ export function Privacy({ dict }: { dict: Dict }) {
                   </div>
                 ))}
               </div>
-              <div className="mt-10 p-6 rounded-2xl bg-[var(--ink)] text-[var(--bg)]">
+              <div className="mt-10 p-6 rounded-2xl bg-[var(--feature-bg)] text-[var(--feature-ink)]">
                 <p className="text-sm leading-relaxed">{dict.badge}</p>
               </div>
             </RevealOnView>

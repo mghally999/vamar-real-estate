@@ -7,7 +7,6 @@ import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
 import { cn } from "@/lib/cn";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["apply"];
 type Track = "owner" | "investor";
@@ -39,7 +38,7 @@ const initial: State = {
   phone: "",
 };
 
-export function ApplyForm({ dict, locale }: { dict: Dict; locale: Locale }) {
+export function ApplyForm({ dict }: { dict: Dict }) {
   const [s, setS] = useState<State>(initial);
   const [submitted, setSubmitted] = useState(false);
 
@@ -85,7 +84,7 @@ export function ApplyForm({ dict, locale }: { dict: Dict; locale: Locale }) {
               {dict.sentBody}
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <PillButton href={`/${locale}`} variant="ghost">
+              <PillButton href={"/"} variant="ghost">
                 &larr;
               </PillButton>
             </div>
@@ -127,7 +126,7 @@ export function ApplyForm({ dict, locale }: { dict: Dict; locale: Locale }) {
                 onClick={() => switchTrack(t)}
                 className={cn(
                   "relative z-10 px-5 py-2 text-sm rounded-full transition-colors",
-                  s.track === t ? "text-white" : "text-[var(--ink-soft)]"
+                  s.track === t ? "text-[var(--pill-text)]" : "text-[var(--ink-soft)]"
                 )}
                 aria-pressed={s.track === t}
               >
@@ -334,7 +333,7 @@ function ChipGroup({
               className={cn(
                 "px-4 py-2.5 rounded-full text-sm border transition",
                 active
-                  ? "bg-[var(--ink)] text-white border-[var(--ink)]"
+                  ? "bg-[var(--ink)] text-[var(--pill-text)] border-[var(--ink)]"
                   : "bg-transparent text-[var(--ink)] border-[var(--line)] hover:border-[var(--ink)]"
               )}
             >

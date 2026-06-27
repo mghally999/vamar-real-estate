@@ -1,35 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { notFound } from "next/navigation";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import { ScrubWords } from "@/components/primitives/ScrubWords";
 import { media } from "@/lib/media";
 import { getDictionary } from "@/lib/getDictionary";
-import { isLocale, type Locale } from "@/lib/i18n-config";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = await getDictionary(locale);
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = await getDictionary();
   return {
     title: dict.about.metaTitle,
     description: dict.about.metaDescription,
   };
 }
 
-export default async function AboutPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = await getDictionary(locale);
+export default async function AboutPage() {
+  const dict = await getDictionary();
   const d = dict.about;
 
   return (
@@ -104,16 +90,16 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <section className="py-24 sm:py-40 bg-[var(--ink)] text-[var(--bg)]">
+      <section className="py-24 sm:py-40 bg-[var(--feature-bg)] text-[var(--feature-ink)]">
         <div className="container-x">
           <RevealOnView>
-            <div className="eyebrow mb-4 text-[var(--ink-faint)]">
+            <div className="eyebrow mb-4 text-[var(--feature-faint)]">
               {d.principlesEyebrow}
             </div>
             <h2 className="h1 max-w-[18ch]">
               {d.principlesTitle[0]}
               <br />
-              <span style={{ color: "var(--ink-faint)" }}>
+              <span style={{ color: "var(--feature-faint)" }}>
                 {d.principlesTitle[1]}
               </span>
             </h2>
@@ -126,13 +112,13 @@ export default async function AboutPage({
                 delay={i * 0.06}
                 className="border-t border-white/15 pt-8"
               >
-                <div className="text-sm tracking-[0.18em] text-[var(--ink-faint)] uppercase mb-4">
+                <div className="text-sm tracking-[0.18em] text-[var(--feature-faint)] uppercase mb-4">
                   {v.n}
                 </div>
                 <h3 className="text-2xl sm:text-3xl tracking-[-0.02em] font-medium mb-4 max-w-[20ch]">
                   {v.title}
                 </h3>
-                <p className="text-[var(--ink-faint)] max-w-[36ch] leading-relaxed">
+                <p className="text-[var(--feature-faint)] max-w-[36ch] leading-relaxed">
                   {v.body}
                 </p>
               </RevealOnView>
@@ -153,7 +139,7 @@ export default async function AboutPage({
                   {d.leadershipTitle[1]}
                 </h2>
               </div>
-              <PillButton href={`/${locale}/agents`} variant="ghost">
+              <PillButton href={`/agents`} variant="ghost">
                 {d.leadershipCta}
               </PillButton>
             </div>

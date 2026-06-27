@@ -3,11 +3,10 @@
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["founders"];
 
-export function Founders({ dict, locale }: { dict: Dict; locale: Locale }) {
+export function Founders({ dict }: { dict: Dict }) {
   return (
     <section className="py-24 sm:py-40">
       <div className="container-x">
@@ -47,7 +46,7 @@ export function Founders({ dict, locale }: { dict: Dict; locale: Locale }) {
                 {m.bio}
               </p>
               <PillButton
-                href={`/${locale}/agents/${m.slug}`}
+                href={`/agents/${m.slug}`}
                 variant="ghost"
                 className="mt-6"
               >

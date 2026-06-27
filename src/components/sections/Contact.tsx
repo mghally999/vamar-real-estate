@@ -30,14 +30,14 @@ export function Contact({ dict }: { dict: Dict }) {
   ];
 
   return (
-    <section className="py-24 sm:py-40 bg-[var(--ink)] text-[var(--bg)]">
+    <section className="py-24 sm:py-40 bg-[var(--feature-bg)] text-[var(--feature-ink)]">
       <div className="container-x">
         <RevealOnView>
-          <div className="eyebrow mb-4 text-[var(--bg)]/55">
+          <div className="eyebrow mb-4 text-[var(--feature-ink)]/55">
             {dict.eyebrow}
           </div>
           <h2 className="h1 max-w-[18ch]">{dict.title[0]}</h2>
-          <p className="mt-6 max-w-[52ch] text-lg text-[var(--bg)]/65 leading-relaxed">
+          <p className="mt-6 max-w-[52ch] text-lg text-[var(--feature-ink)]/65 leading-relaxed">
             {dict.subtitle}
           </p>
         </RevealOnView>
@@ -49,7 +49,7 @@ export function Contact({ dict }: { dict: Dict }) {
               delay={i * 0.06}
               className="border-t border-white/15 pt-6"
             >
-              <div className="text-sm tracking-[0.18em] text-[var(--bg)]/55 uppercase mb-3">
+              <div className="text-sm tracking-[0.18em] text-[var(--feature-ink)]/55 uppercase mb-3">
                 {item.label}
               </div>
               {item.href ? (

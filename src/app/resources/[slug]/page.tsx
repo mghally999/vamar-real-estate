@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ARTICLES, getArticleBySlug } from "@/data/resources";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
-import { isLocale } from "@/lib/i18n-config";
 import { getDictionary } from "@/lib/getDictionary";
 
 export function generateStaticParams() {
@@ -15,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
@@ -29,11 +28,10 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { locale, slug } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = await getDictionary(locale);
+  const { slug } = await params;
+  const dict = await getDictionary();
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
@@ -45,7 +43,7 @@ export default async function ArticlePage({
         <RevealOnView className="max-w-[64ch] mx-auto">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-[var(--ink-soft)] mb-6">
             <Link
-              href={`/${locale}/resources`}
+              href={`/resources`}
               className="hover:text-[var(--ink)] transition-colors"
             >
               {dict.resources.eyebrow}
@@ -121,7 +119,7 @@ export default async function ArticlePage({
                 {dict.talkToHuman.cta}
               </p>
             </div>
-            <PillButton href={`/${locale}/apply`} variant="dark" arrow="right">
+            <PillButton href={`/apply`} variant="dark" arrow="right">
               {dict.talkToHuman.cta}
             </PillButton>
           </div>
@@ -136,7 +134,7 @@ export default async function ArticlePage({
                   <h2 className="h2 max-w-[18ch]">{dict.resources.readMore}</h2>
                 </div>
                 <Link
-                  href={`/${locale}/resources`}
+                  href={`/resources`}
                   className="hidden sm:inline text-sm tracking-[-0.01em] text-[var(--ink-soft)] hover:text-[var(--ink)] transition-colors"
                 >
                   {dict.resources.eyebrow} &rarr;
@@ -152,7 +150,7 @@ export default async function ArticlePage({
                   delay={i * 0.05}
                 >
                   <Link
-                    href={`/${locale}/resources/${a.slug}`}
+                    href={`/resources/${a.slug}`}
                     className="group block"
                   >
                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--bg-elev)]">

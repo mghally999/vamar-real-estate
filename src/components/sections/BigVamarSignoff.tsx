@@ -7,16 +7,13 @@ import { gsap, registerGsap } from "@/lib/gsap";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["signoff"];
 
 export function BigVamarSignoff({
   dict,
-  locale,
 }: {
   dict: Dict;
-  locale: Locale;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -129,8 +126,8 @@ export function BigVamarSignoff({
         </h2>
 
         <div className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-3">
-          <PillButton href={`/${locale}/apply`}>{dict.ctaPrimary}</PillButton>
-          <PillButton href={`/${locale}/agents`} variant="ghost">
+          <PillButton href={`/apply`}>{dict.ctaPrimary}</PillButton>
+          <PillButton href={`/agents`} variant="ghost">
             {dict.ctaSecondary}
           </PillButton>
         </div>

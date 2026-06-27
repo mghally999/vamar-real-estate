@@ -1,34 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { notFound } from "next/navigation";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
 import { getDictionary } from "@/lib/getDictionary";
-import { isLocale } from "@/lib/i18n-config";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = await getDictionary(locale);
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = await getDictionary();
   return {
     title: dict.paperwork.metaTitle,
     description: dict.paperwork.metaDescription,
   };
 }
 
-export default async function PaperworkPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = await getDictionary(locale);
+export default async function PaperworkPage() {
+  const dict = await getDictionary();
   const d = dict.paperwork;
 
   return (
@@ -105,11 +91,11 @@ export default async function PaperworkPage({
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-[var(--ink)] text-[var(--bg)]">
+      <section className="py-24 sm:py-32 bg-[var(--feature-bg)] text-[var(--feature-ink)]">
         <div className="container-x grid grid-cols-12 gap-10">
           <div className="col-span-12 lg:col-span-7">
             <RevealOnView>
-              <div className="eyebrow mb-4 text-[var(--ink-faint)]">
+              <div className="eyebrow mb-4 text-[var(--feature-faint)]">
                 {d.ctaEyebrow}
               </div>
               <h2
@@ -118,7 +104,7 @@ export default async function PaperworkPage({
               >
                 {d.ctaTitle[0]}
                 <br />
-                <span style={{ color: "var(--ink-faint)" }}>
+                <span style={{ color: "var(--feature-faint)" }}>
                   {d.ctaTitle[1]}
                 </span>
               </h2>
@@ -126,13 +112,13 @@ export default async function PaperworkPage({
           </div>
           <div className="col-span-12 lg:col-span-5 self-end">
             <RevealOnView>
-              <p className="text-[var(--ink-faint)] mb-8 max-w-[36ch]">
+              <p className="text-[var(--feature-faint)] mb-8 max-w-[36ch]">
                 {d.ctaBody}
               </p>
               <PillButton
-                href={`/${locale}/apply`}
+                href={`/apply`}
                 variant="outline"
-                className="!bg-white !text-[var(--ink)] !border-white hover:!bg-transparent hover:!text-white"
+                className="!bg-white !text-[var(--feature-bg)] !border-white hover:!bg-transparent hover:!text-white"
               >
                 {d.ctaButton}
               </PillButton>

@@ -4,7 +4,7 @@
   },
   "nav": {
     "search": "Search",
-    "team": "Team",
+    "team": "Agents",
     "paperwork": "Paperwork",
     "resources": "Resources",
     "about": "About",
@@ -15,365 +15,365 @@
     "mobilePrimary": "Mobile primary"
   },
   "footer": {
-    "tagline": "Where trust meets exceptional opportunities.",
-    "blurb": "An Emirati boutique brokerage built around the highest-value real estate decisions in the UAE.",
+    "tagline": "Find you. We'll help you get there.",
+    "blurb": "A full-service UAE real estate brokerage helping you buy, sell, rent, and invest with expert agents and clear guidance.",
     "siteHeading": "Site",
-    "resourcesHeading": "Resources",
+    "resourcesHeading": "Discover",
     "connectHeading": "Connect",
     "rights": "All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms",
-    "compliance": "Regulatory",
+    "compliance": "Fair Housing",
     "contactHeading": "Get in touch",
-    "phone": "+971 54 333 0100",
-    "email": "vamar.uae@gmail.com",
-    "address": "Dubai, United Arab Emirates",
+    "phone": "+971 4 123 4567",
+    "email": "hello@vamar.ae",
+    "address": "Business Bay, Dubai, United Arab Emirates",
     "website": "vamar.ae"
   },
   "hero": {
-    "title": "Find what moves the markets that matter.",
-    "subtitle": "Trusted brokerage for high-value real estate across the UAE.",
-    "primaryCta": "View opportunities",
-    "secondaryCta": "Speak with us",
+    "title": "Find what moves you.",
+    "subtitle": "Expert agents, clear guidance, and the right move at the right time — across Dubai, Abu Dhabi, and the wider UAE.",
+    "primaryCta": "Browse properties",
+    "secondaryCta": "Talk to an agent",
     "wordmarkLine1": "Vamar",
     "wordmarkLine2": "Real Estate"
   },
   "lifeChanging": {
-    "eyebrow": "About Vamar",
-    "title": ["Major real estate", "doesn't move", "by accident."],
+    "eyebrow": "Why Vamar",
+    "title": ["More than a deal.", "It's about", "moving forward."],
     "paragraphs": [
-      "Vamar is an Emirati real estate brokerage built for assets above AED 50 million — towers, investment lands, luxury villas, and major projects across the UAE.",
-      "We don't run high-volume listings. We run a small number of significant deals — quietly, professionally, and with absolute discretion."
+      "Buying, selling, or renting a home is never only a transaction. It's about where your life is going next — and who you trust to guide you there.",
+      "Vamar pairs you with an expert UAE agent who listens first, knows the market, and stays with you from the first viewing to the keys in your hand."
     ],
-    "cta": "Meet the founders",
-    "imageCaption1": "Where trust",
-    "imageCaption2": "meets opportunity"
+    "cta": "Meet our agents",
+    "imageCaption1": "Find you.",
+    "imageCaption2": "We'll help you get there."
   },
   "chevronStrip": {
-    "eyebrow": "What we represent",
-    "title": ["Heavy assets,", "handled with care."],
-    "subtitle": "The category changes. The discipline doesn't: privacy, precision, and direct access to the right side of every deal.",
+    "eyebrow": "What we do",
+    "title": ["Buy. Sell. Rent.", "Invest."],
+    "subtitle": "Whatever your next move in UAE real estate, there's a Vamar agent who handles it every day — with honesty, speed, and a plan.",
     "panels": [
-      { "tag": "Towers", "alt": "Commercial tower glass facade at dusk" },
-      { "tag": "Lands", "alt": "Investment land plot near Dubai skyline" },
-      { "tag": "Villas", "alt": "Luxury villa exterior at golden hour" },
-      { "tag": "Projects", "alt": "Major real estate development under construction" }
+      { "tag": "Buy", "alt": "Modern Dubai apartment interior with skyline view" },
+      { "tag": "Sell", "alt": "Luxury UAE villa exterior at golden hour" },
+      { "tag": "Rent", "alt": "Bright furnished living room in a UAE residence" },
+      { "tag": "Invest", "alt": "Dubai skyline of investment towers at dusk" }
     ]
   },
   "heavyAssets": {
-    "eyebrow": "Heavy Assets Division",
-    "title": ["Properties above", "AED 50 million."],
-    "intro": "We specialise in managing and marketing heavy real estate — properties exceeding AED 50 million — with a focus on premium assets that hold long-term investment value.",
-    "categoriesHeading": "What we represent",
+    "eyebrow": "Full service",
+    "title": ["Everything you need,", "under one roof."],
+    "intro": "From your first search to closing day and beyond, Vamar covers the whole journey — so you never have to chase five different companies to get one home over the line.",
+    "categoriesHeading": "Our services",
     "categories": [
-      "Commercial and residential towers",
-      "Investment and development lands",
-      "Luxury villas and mansions",
-      "Major real estate projects",
-      "Private and exclusive assets"
+      "Residential sales — apartments, villas, and townhouses",
+      "Leasing and rentals for tenants and landlords",
+      "Off-plan and investment advisory",
+      "Mortgage guidance with trusted UAE lenders",
+      "Property management and maintenance"
     ],
-    "note": "We operate with privacy and professionalism, dealing directly with property owners or those holding official power of attorney — ensuring opportunity credibility and deal quality."
+    "note": "Every client works with one accountable agent backed by the full Vamar team — legal, mortgage, and handover support included, with no hidden fees."
   },
   "rewiredSteps": {
-    "eyebrow": "How we work",
-    "title": ["Major deals,", "managed quietly."],
-    "lead": "Heavy real estate doesn't need theatre. It needs a partner who understands the asset, protects the principals, and moves only when the alignment is real.",
+    "eyebrow": "How it works",
+    "title": ["Real estate,", "rewired."],
+    "lead": "Property in the UAE shouldn't feel like a guessing game. We've stripped it back to three simple steps, so you always know what's happening and what comes next.",
     "steps": [
       {
         "n": "01",
-        "title": "We understand the asset and the intent.",
-        "body": "Whether you own a tower or you're searching for one, we start with the brief — the asset, the timing, the constraints, and what success looks like for you specifically."
+        "title": "Talk to a real agent.",
+        "body": "Tell us what you're looking for — area, budget, timing, the must-haves. We match you with an agent who actually works that market, not a call centre."
       },
       {
         "n": "02",
-        "title": "We move through our network, not the noise.",
-        "body": "Our work happens privately. We connect serious owners with serious buyers — pre-qualified, capitalised, and prepared to move at the level the deal requires."
+        "title": "Get clarity, not pressure.",
+        "body": "Honest advice on price, neighbourhoods, mortgages, and paperwork. We show you the trade-offs so you can decide with confidence, never in a rush."
       },
       {
         "n": "03",
-        "title": "We manage the transaction end to end.",
-        "body": "Negotiation, due diligence, paperwork, regulatory steps — managed discreetly by one accountable team, from first conversation to final signature."
+        "title": "Move forward.",
+        "body": "We handle the viewings, negotiation, contracts, and DLD transfer end to end — and stay on hand long after you've moved in."
       }
     ]
   },
   "founders": {
-    "eyebrow": "The founders",
-    "title": ["A small team", "that closes more", "than it speaks."],
-    "subtitle": "Vamar is led by two Emirati partners with deep relationships across the UAE's high-value real estate market.",
+    "eyebrow": "Our agents",
+    "title": ["Local experts who", "know every street,", "not just every listing."],
+    "subtitle": "Vamar agents are UAE specialists who live and work in the communities they sell — so the advice you get is grounded in the market, not a brochure.",
     "members": [
       {
         "slug": "abdullah-al-naqbi",
         "name": "Abdullah Al Naqbi",
-        "role": "Founder & Partner",
-        "quote": "At Vamar, we believe trust comes before closing any deal. We build genuine, sustainable relationships with owners and investors — and we present exceptional opportunities with a style that fits the value of the assets we represent.",
-        "bio": "Abdullah leads owner relationships and the Heavy Assets Division. His view: a 50-million-dirham conversation begins with credibility, not with a portfolio. He works directly with property owners and their authorised representatives across Dubai and the wider UAE."
+        "role": "Senior Property Advisor",
+        "quote": "My job isn't to sell you a property. It's to help you make the right move — even if that means telling you to wait. Get that right and the rest takes care of itself.",
+        "bio": "Abdullah specialises in residential sales across Dubai — from Downtown and Business Bay apartments to Arabian Ranches family villas. Clients come to him for straight answers on price, timing, and which communities genuinely fit how they live."
       },
       {
         "slug": "salem-bin-touq",
         "name": "Salem bin Touq",
-        "role": "Founder & Partner",
-        "quote": "Heavy real estate needs experience, privacy, and deep market understanding. At Vamar, we focus on reaching the right investor and building deals based on credibility, professionalism, and strong relationships.",
-        "bio": "Salem leads the investor side — local and international principals looking for serious, off-market opportunities. His work is to qualify intent before introducing a deal, so every meeting starts with both sides already aligned."
+        "role": "Investment & Leasing Advisor",
+        "quote": "The UAE rewards people who buy with a plan. I help investors and tenants alike see the numbers clearly, so every decision holds up years later.",
+        "bio": "Salem leads investment and leasing — off-plan opportunities, rental yields, and landlord representation across Dubai and Abu Dhabi. He qualifies the numbers before the emotion, so every deal makes sense on paper as well as in person."
       }
     ]
   },
   "testimonials": {
-    "eyebrow": "In our own words",
-    "title": ["We let the work,", "and our partners,", "speak for us."]
+    "eyebrow": "In their words",
+    "title": ["Don't take our", "word for it.", "Take theirs."]
   },
   "ownersPitch": {
-    "eyebrow": "For owners",
-    "title": ["Represent your asset", "the way it deserves."],
-    "body": "If you own a tower, a major land plot, a luxury villa, or a premium asset, Vamar gives you a private, professional channel to qualified buyers — without exposure on public listings.",
-    "ctaPrimary": "Engage Vamar",
+    "eyebrow": "Join Vamar",
+    "title": ["Build your career.", "Own your work."],
+    "body": "Vamar is built by agents, for agents. If you're a licensed UAE professional who wants real ownership, modern tools, and warm leads instead of cold scripts, let's talk.",
+    "ctaPrimary": "Join the team",
     "ctaSecondary": "How we work",
     "stats": [
-      { "k": "50M+", "v": "AED minimum asset size" },
-      { "k": "100%", "v": "Direct owner or POA only" },
-      { "k": "Private", "v": "Off-market by default" },
-      { "k": "UAE", "v": "Full national coverage" }
+      { "k": "7", "v": "Emirates covered" },
+      { "k": "1,000+", "v": "Families moved" },
+      { "k": "4.9★", "v": "Average client rating" },
+      { "k": "24h", "v": "Typical response time" }
     ]
   },
   "talkToHuman": {
-    "eyebrowSmall": "No bots. No public listings of private assets.",
-    "title": ["Speak with a", "real partner."],
-    "body": "A founder or a senior member of the team responds personally. We listen first, share nothing without permission, and tell you straight when an opportunity isn't the right fit.",
+    "eyebrowSmall": "No bots. No call-centre runaround.",
+    "title": ["Speak with a", "real person."],
+    "body": "Reach out and a real Vamar agent gets back to you personally — usually within a day. We listen first, answer honestly, and tell you straight when something isn't the right fit.",
     "cta": "Start a conversation"
   },
   "whyAccordion": {
     "eyebrow": "Common questions",
-    "title": ["Why Vamar,", "in detail."],
-    "subtitle": "The questions worth asking before you engage anyone with an asset of this size.",
+    "title": ["Good to know,", "before you start."],
+    "subtitle": "The questions buyers, sellers, and renters ask us most — answered plainly.",
     "items": [
       {
-        "q": "Who does Vamar work with?",
-        "a": "We work with property owners (and their official representatives) of assets above AED 50 million, and with serious investors — both local and international — looking for confidential access to premium UAE real estate."
+        "q": "Do I pay Vamar a fee as a buyer or tenant?",
+        "a": "Our fees are transparent and explained upfront before you commit to anything. Standard UAE agency commission applies on a successful sale or lease — no surprise charges, ever."
       },
       {
-        "q": "Are deals listed publicly?",
-        "a": "No. Heavy assets we represent are not posted on public portals. We work off-market by default, sharing details only with qualified, intent-aligned counterparties."
+        "q": "Can a foreigner buy property in the UAE?",
+        "a": "Yes. Non-residents and residents can buy in designated freehold areas across Dubai, Abu Dhabi, and other emirates. Your Vamar agent will walk you through eligibility, financing, and the full process."
       },
       {
-        "q": "How is confidentiality protected?",
-        "a": "Information about the asset, the owner, and the buyer is shared only with parties who have signed appropriate confidentiality terms and have demonstrated readiness to transact at the relevant level."
+        "q": "Do you help with mortgages?",
+        "a": "We do. We work with trusted UAE banks and brokers to get you pre-approved and find competitive rates, so you can shop with a clear budget and move quickly when you find the right home."
       },
       {
-        "q": "Do you handle properties below AED 50M?",
-        "a": "Our focus is the heavy-asset segment. We may make exceptions for long-standing relationships or for premium assets that fit our network, but we are not a high-volume general brokerage."
+        "q": "Can you manage my property after I buy?",
+        "a": "Yes. Our property management team handles tenants, rent collection, maintenance, and renewals — ideal for investors and overseas owners who want a hands-off, well-run asset."
       },
       {
-        "q": "Are you an Emirati company?",
-        "a": "Yes. Vamar is an Emirati-founded and Emirati-led brokerage, registered in the UAE, with deep local relationships across owners, family offices, and major investors."
+        "q": "I want to sell. How do you price my home?",
+        "a": "We give you a realistic, data-backed valuation based on recent comparable sales and current demand in your community — not an inflated number to win the listing."
       },
       {
-        "q": "How quickly can a deal move?",
-        "a": "When both sides are ready, very quickly. The majority of the timeline goes into qualifying alignment — once that's done, the transaction itself is short and disciplined."
+        "q": "How fast can you find me a place to rent?",
+        "a": "Often within days. Tell your agent your budget, area, and move-in date, and we'll line up viewings of properties that genuinely match — not whatever happens to be empty."
       }
     ]
   },
   "privacy": {
-    "eyebrow": "Privacy & confidentiality",
-    "title": ["Privacy is the", "foundation of every", "major deal."],
+    "eyebrow": "The Vamar difference",
+    "title": ["Guidance you can", "actually trust,", "every step of the way."],
     "paragraphs": [
-      "At Vamar, privacy isn't a policy — it's the core of how we operate. We apply the highest standards of confidentiality and professionalism across every conversation, document, and introduction.",
-      "We protect the information of owners and investors. We handle sensitive opportunities with a professional approach that preserves discretion at every stage.",
-      "We deal selectively — only with serious, qualified parties — creating a safe and trusted environment for high-value transactions."
+      "Most people only buy or sell a handful of times in their life. We do it every day — and we treat your move with the care we'd want for our own family.",
+      "That means honest advice over a quick commission, clear communication instead of jargon, and an agent who picks up the phone long after the deal is done.",
+      "It's a simple promise: do right by the client, and the business takes care of itself."
     ],
-    "pillarHeading": "Three layers of confidentiality",
+    "pillarHeading": "What you get with Vamar",
     "pillars": [
       {
-        "title": "Direct and selective contact",
-        "body": "Only serious, qualified parties enter the conversation."
+        "title": "Expert local agents",
+        "body": "Specialists who know your community, its prices, and its quirks inside out."
       },
       {
-        "title": "Professional handling of sensitive opportunities",
-        "body": "The asset, the owner, and the buyer remain protected at every step."
+        "title": "Clear, honest guidance",
+        "body": "Straight answers on price, timing, and paperwork — no pressure, no spin."
       },
       {
-        "title": "Full information protection",
-        "body": "Owner and investor information is safeguarded across the entire deal lifecycle."
+        "title": "End-to-end support",
+        "body": "Viewings, mortgage, contracts, DLD transfer, and handover — all handled for you."
       }
     ],
-    "badge": "A trusted environment for the UAE's largest real estate transactions."
+    "badge": "Trusted by buyers, sellers, tenants, and investors across the UAE."
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": ["Speak to Vamar."],
-    "subtitle": "Specialist Emirati brokerage for heavy assets and high-value real estate across the UAE.",
+    "title": ["Let's find your next move."],
+    "subtitle": "A full-service UAE brokerage for buying, selling, renting, and investing — wherever you are in the journey.",
     "phoneLabel": "Phone",
-    "phoneValue": "+971 54 333 0100",
+    "phoneValue": "+971 4 123 4567",
     "emailLabel": "Email",
-    "emailValue": "vamar.uae@gmail.com",
+    "emailValue": "hello@vamar.ae",
     "websiteLabel": "Website",
     "websiteValue": "vamar.ae",
     "addressLabel": "Address",
-    "addressValue": "Dubai, United Arab Emirates"
+    "addressValue": "Business Bay, Dubai, United Arab Emirates"
   },
   "signoff": {
-    "eyebrow": "Where trust meets exceptional opportunities.",
+    "eyebrow": "Find you. We'll help you get there.",
     "wordmark": "vamar.",
-    "ctaPrimary": "Engage Vamar",
-    "ctaSecondary": "Meet the founders"
+    "ctaPrimary": "Browse properties",
+    "ctaSecondary": "Meet our agents"
   },
   "about": {
     "metaTitle": "About",
-    "metaDescription": "An Emirati boutique brokerage for high-value real estate in the UAE.",
+    "metaDescription": "Vamar Real Estate — a full-service UAE brokerage for buying, selling, renting, and investing.",
     "eyebrow": "About Vamar",
-    "title": ["A different kind of", "Emirati brokerage,", "built for serious assets."],
-    "intro": "Vamar Real Estate is an Emirati brokerage specialising in heavy real estate — assets above AED 50 million — across the United Arab Emirates. We focus on towers, investment lands, luxury villas, and major real estate projects, with a professional model built on trust, privacy, and direct relationships.",
-    "storyEyebrow": "The brief",
-    "storyTitle": ["Built around the asset,", "not around the listing."],
+    "title": ["A modern UAE", "brokerage, built", "around you."],
+    "intro": "Vamar Real Estate is a full-service brokerage helping people buy, sell, rent, and invest across the United Arab Emirates. We pair every client with an expert local agent and handle the whole journey — from the first search to the keys, and everything in between.",
+    "storyEyebrow": "Our story",
+    "storyTitle": ["Built around the client,", "not the commission."],
     "storyParagraphs": [
-      "Major real estate doesn't work like the rest of the market. The owners are different. The buyers are different. The information, the timelines, and the stakes are different. The brokerage representing the asset has to be different too.",
-      "Vamar was founded to provide that level of representation — quietly, with the relationships and discretion that high-value deals require."
+      "Too much of real estate is built around the deal instead of the person making it. We started Vamar to flip that — to make honest, expert guidance the default, not the exception.",
+      "Today our agents work across all seven emirates, but the promise is the same as day one: tell you the truth, do the work, and earn the next referral."
     ],
-    "principlesEyebrow": "Operating principles",
-    "principlesTitle": ["What we believe", "matters here."],
+    "principlesEyebrow": "What we believe",
+    "principlesTitle": ["The principles", "behind every move."],
     "principles": [
       {
         "n": "01",
-        "title": "Trust comes before any deal.",
-        "body": "We build relationships first. The transaction follows when the alignment is real — never the other way around."
+        "title": "The client comes first.",
+        "body": "We give the advice we'd give a friend — even when it means a smaller deal, or no deal at all today."
       },
       {
         "n": "02",
-        "title": "Privacy is non-negotiable.",
-        "body": "Owner identity, asset details, and buyer intent are all protected. We don't post heavy assets on public portals."
+        "title": "Honesty over hype.",
+        "body": "Realistic valuations, clear costs, and straight talk on the trade-offs. No inflated numbers to win a listing."
       },
       {
         "n": "03",
-        "title": "Direct contact only.",
-        "body": "We deal with property owners or those holding official power of attorney — and with serious, qualified buyers. No middle layers, no noise."
+        "title": "Local expertise.",
+        "body": "Our agents live and work in the communities they sell, so the advice is grounded in the real market."
       },
       {
         "n": "04",
-        "title": "Deep UAE specialisation.",
-        "body": "Emirati-founded, Emirati-led, with relationships across the country's most significant owners, family offices, and investors."
+        "title": "We stay in it.",
+        "body": "From mortgage to handover and long after, your agent is one message away — not gone the moment you sign."
       }
     ],
-    "leadershipEyebrow": "Leadership",
-    "leadershipTitle": ["A small team that closes", "more than it speaks."],
-    "leadershipCta": "All of the team"
+    "leadershipEyebrow": "Our agents",
+    "leadershipTitle": ["The people who'll", "guide your move."],
+    "leadershipCta": "See all agents"
   },
   "team": {
-    "metaTitle": "Team",
-    "metaDescription": "Meet the founders and team behind Vamar Real Estate.",
-    "eyebrow": "The team",
-    "title": ["Specialists,", "not generalists."],
-    "intro": "Vamar is led personally by its two founders. Every introduction, every negotiation, and every confidentiality decision goes through one of them — by design.",
+    "metaTitle": "Agents",
+    "metaDescription": "Meet the expert UAE agents behind Vamar Real Estate.",
+    "eyebrow": "Our agents",
+    "title": ["Local experts,", "not generalists."],
+    "intro": "Every Vamar agent is a UAE specialist in their patch — sales, leasing, off-plan, or investment. Find the right person for your move and reach out directly.",
     "searchLabel": "Search",
     "searchPlaceholder": "Search by name or focus",
-    "memberCountSingle": "member",
-    "memberCountPlural": "members",
-    "more": "More partners and senior team members to be announced.",
-    "back": "Back to team",
+    "memberCountSingle": "agent",
+    "memberCountPlural": "agents",
+    "more": "More agents joining the Vamar team across the UAE soon.",
+    "back": "Back to agents",
     "yearsLabel": "y",
     "specialtyLabel": "Focus",
     "regionLabel": "Coverage",
     "languagesLabel": "Languages",
-    "closedDealsLabel": "Career deals overseen",
+    "closedDealsLabel": "Deals closed",
     "emailLabel": "Email",
     "phoneLabel": "Phone"
   },
   "paperwork": {
     "metaTitle": "Paperwork",
-    "metaDescription": "The documentation involved in major UAE real estate transactions — clear, sequenced, and explained.",
+    "metaDescription": "The documents involved in buying, selling, and renting property in the UAE — explained simply.",
     "eyebrow": "Paperwork",
-    "title": ["Every signature,", "in its right place."],
-    "intro": "Major real estate transactions in the UAE involve several layers of documentation — between owners, buyers, brokers, banks, and the Dubai Land Department (or the relevant emirate's authority). Below is what to expect, sequenced from first conversation to title transfer.",
-    "imageAlt": "A clean desk with documents and a fountain pen",
+    "title": ["Every form,", "made simple."],
+    "intro": "UAE property transactions involve paperwork between buyers, sellers, agents, banks, and the Dubai Land Department (or your emirate's authority). Here's what to expect, in order — and your Vamar agent prepares all of it with you.",
+    "imageAlt": "A clean desk with property documents and a pen",
     "sections": [
       {
-        "title": "Owner side",
+        "title": "Seller side",
         "docs": [
-          { "label": "Title Deed (Oqood / Mulkiya)", "note": "Proof of ownership issued by the relevant land department." },
-          { "label": "Power of Attorney (if applicable)", "note": "Notarised authorisation for a representative to act on the owner's behalf." },
-          { "label": "Listing Authorisation Agreement", "note": "The terms under which Vamar may represent and market the asset." },
-          { "label": "Service Charges & NOC", "note": "No Objection Certificate from the developer or community, plus settled service charges." }
+          { "label": "Title Deed (Mulkiya / Oqood)", "note": "Proof of ownership issued by the land department." },
+          { "label": "Passport & Emirates ID", "note": "Identification for the registered owner." },
+          { "label": "Listing Agreement (Form A)", "note": "The terms under which Vamar markets your property." },
+          { "label": "Service Charges & NOC", "note": "No Objection Certificate from the developer, plus settled service charges." }
         ]
       },
       {
         "title": "Buyer side",
         "docs": [
-          { "label": "Proof of Funds / Bank Letter", "note": "Required before formal introductions for heavy assets." },
           { "label": "Passport & Emirates ID", "note": "Identification for transaction registration." },
-          { "label": "Memorandum of Understanding (Form F)", "note": "The standard sale & purchase agreement between buyer and seller." },
-          { "label": "Mortgage Pre-Approval (if financed)", "note": "From a UAE bank, valid at the time of MOU signing." }
+          { "label": "Mortgage Pre-Approval", "note": "From a UAE bank if you're financing the purchase." },
+          { "label": "Proof of Funds", "note": "Evidence you can complete the purchase." },
+          { "label": "Buyer Agreement (Form B)", "note": "Authorises Vamar to represent you as the buyer." }
         ]
       },
       {
-        "title": "Transaction documents",
+        "title": "Tenant & landlord",
         "docs": [
-          { "label": "Form A — Listing Agreement", "note": "Seller authorises a brokerage to market the property." },
-          { "label": "Form B — Buyer Representation", "note": "Buyer authorises a brokerage to represent them." },
-          { "label": "Form F — MOU / Sale Contract", "note": "Binding sale agreement; deposit typically 10% on signing." },
-          { "label": "Form I — Cooperation Agreement", "note": "Between brokerages when buyer and seller use different firms." }
+          { "label": "Tenancy Contract", "note": "The signed lease between landlord and tenant." },
+          { "label": "Ejari Registration", "note": "Official registration of the tenancy in Dubai." },
+          { "label": "Security Deposit Receipt", "note": "Typically 5% of annual rent for unfurnished homes." },
+          { "label": "DEWA & Cooling Setup", "note": "Utilities and district cooling activated in the tenant's name." }
         ]
       },
       {
         "title": "Closing & transfer",
         "docs": [
+          { "label": "Memorandum of Understanding (Form F)", "note": "The signed sale agreement; deposit usually 10%." },
           { "label": "Manager's Cheques", "note": "Cleared funds prepared for transfer day." },
-          { "label": "Developer NOC", "note": "Cleared in advance of the transfer appointment." },
-          { "label": "DLD Transfer Appointment", "note": "Title is transferred at the Dubai Land Department (or relevant emirate)." },
-          { "label": "New Title Deed Issuance", "note": "Issued in the buyer's name on the day of transfer." }
+          { "label": "DLD Transfer Appointment", "note": "Title transferred at the Dubai Land Department or trustee office." },
+          { "label": "New Title Deed", "note": "Issued in the buyer's name on the day of transfer." }
         ]
       }
     ],
-    "ctaEyebrow": "Need a specific document?",
-    "ctaTitle": ["Ask Vamar.", "We'll prepare it."],
-    "ctaBody": "Each transaction has its own paperwork map. Tell us where you are in the journey and we'll send the exact sequence that applies to your asset.",
-    "ctaButton": "Request paperwork support",
+    "ctaEyebrow": "Not sure what you need?",
+    "ctaTitle": ["Ask Vamar.", "We'll handle it."],
+    "ctaBody": "Every transaction is a little different. Tell us where you are — buying, selling, or renting — and we'll send the exact checklist that applies to you.",
+    "ctaButton": "Get paperwork help",
     "estimateLabel": "Time to complete"
   },
   "resources": {
     "metaTitle": "Resources",
-    "metaDescription": "Notes on the UAE's heavy-asset real estate market, from the Vamar team.",
+    "metaDescription": "Guides and market notes for buying, selling, renting, and investing in UAE real estate.",
     "eyebrow": "Resources",
-    "title": ["Reading worth", "your time."],
-    "intro": "Market notes, owner briefings, and operational guides for the upper end of UAE real estate — written by the Vamar team, not by a content farm.",
+    "title": ["Smart moves", "start here."],
+    "intro": "Market reports, neighbourhood guides, and practical how-tos for UAE property — written by Vamar agents who do this every day.",
     "allTagsLabel": "All",
     "readMore": "Read"
   },
   "search": {
     "metaTitle": "Search",
-    "metaDescription": "A discreet selection of heavy real estate currently represented by Vamar.",
-    "eyebrow": "Opportunities",
-    "title": ["A small, considered", "selection."],
-    "intro": "What you see here is a public-facing slice. Most of the assets we represent are off-market. Speak with us to access the full set.",
+    "metaDescription": "Browse apartments, villas, and townhouses for sale and rent across the UAE with Vamar.",
+    "eyebrow": "Properties",
+    "title": ["Find the one", "that fits."],
+    "intro": "A selection of homes currently with Vamar — for sale and to rent across Dubai and Abu Dhabi. Tell your agent what you're after and we'll surface more, including off-market options.",
     "filtersLabel": "Filters",
     "modeAll": "All",
     "modeSale": "For sale",
-    "modeRent": "For lease",
+    "modeRent": "For rent",
     "bedsLabel": "Bedrooms",
     "anyBeds": "Any",
     "neighborhoodLabel": "Area",
     "anyArea": "Any area",
     "results": "results",
     "resetFilters": "Clear filters",
-    "empty": "No matches. Adjust filters or speak with us for off-market options."
+    "empty": "No matches. Adjust your filters or talk to an agent for more options."
   },
   "apply": {
-    "metaTitle": "Speak with Vamar",
-    "metaDescription": "Engage Vamar — for owners and for serious investors.",
-    "trackOwner": "I own a property",
-    "trackInvestor": "I'm looking to acquire",
-    "intentLabelOwner": "What kind of asset?",
-    "intentLabelInvestor": "What kind of asset are you looking for?",
-    "intentOptions": ["Tower", "Land", "Luxury villa", "Mansion / Palace", "Major project", "Other"],
+    "metaTitle": "Contact Vamar",
+    "metaDescription": "Tell us about your move — buying, selling, renting, or investing in the UAE.",
+    "trackOwner": "I want to sell or rent out",
+    "trackInvestor": "I want to buy or rent",
+    "intentLabelOwner": "What are you listing?",
+    "intentLabelInvestor": "What are you looking for?",
+    "intentOptions": ["Apartment", "Villa", "Townhouse", "Off-plan", "Commercial", "Other"],
     "areaLabel": "Area",
     "areaPlaceholder": "Dubai · Abu Dhabi · Sharjah · Other",
-    "valueLabel": "Approximate value",
-    "valueOptions": ["AED 50–100M", "AED 100–250M", "AED 250–500M", "AED 500M+", "Prefer not to say"],
+    "valueLabel": "Budget / price",
+    "valueOptions": ["Under AED 1M", "AED 1–3M", "AED 3–7M", "AED 7M+", "Prefer not to say"],
     "timeframeLabel": "Timeframe",
-    "timeframeOptions": ["Now", "Within 3 months", "Within 12 months", "Exploring"],
+    "timeframeOptions": ["Now", "Within 3 months", "Within 12 months", "Just exploring"],
     "nameLabel": "Name",
     "emailLabel": "Email",
     "phoneLabel": "Phone (preferred contact)",
     "next": "Next",
     "back": "Back",
-    "submit": "Send privately",
+    "submit": "Send",
     "sentTitle": "Thank you.",
-    "sentBody": "A partner will respond personally. All information shared is treated as strictly confidential."
+    "sentBody": "A Vamar agent will get back to you personally — usually within a day. Your details stay private."
   }
 }

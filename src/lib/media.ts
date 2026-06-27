@@ -18,7 +18,7 @@ export const media = {
 
   // Life-changing — UAE landmarks (Burj Khalifa, Dubai skyline)
   nycSkyline: unsplash("1518684079-3c830dcef090", 2400), // Dubai night skyline w/ Burj Khalifa
-  nycAerial: unsplash("1582672359924-72c4be4ce69d", 2400), // Burj Khalifa daytime tower
+  nycAerial: unsplash("1564507592333-c60657eea523", 2400), // Burj Khalifa daytime tower
 
   // Chevron strip — Buy / Sell / Rent / Invest. Aspirational + varied.
   chev1: unsplash("1613490493576-7fde63acd811", 2000), // sweeping luxury mansion
@@ -27,7 +27,7 @@ export const media = {
   chev4: unsplash("1582407947304-fd86f028f716", 2000), // architectural exterior at dusk
 
   // AgentsPitch backdrop — Burj Khalifa close-up
-  agentsPitch: unsplash("1582672359924-72c4be4ce69d", 2400),
+  agentsPitch: unsplash("1564507592333-c60657eea523", 2400),
 
   // Service words backgrounds (Buy / Sell / Rent)
   serviceBuy: unsplash("1600607687939-ce8a6c25118c", 2200),

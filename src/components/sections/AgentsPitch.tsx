@@ -5,19 +5,16 @@ import { RevealOnView } from "@/components/primitives/RevealOnView";
 import { PillButton } from "@/components/primitives/PillButton";
 import { media } from "@/lib/media";
 import type { Dictionary } from "@/lib/getDictionary";
-import type { Locale } from "@/lib/i18n-config";
 
 type Dict = Dictionary["ownersPitch"];
 
 export function AgentsPitch({
   dict,
-  locale,
 }: {
   dict: Dict;
-  locale: Locale;
 }) {
   return (
-    <section className="relative overflow-hidden bg-[var(--ink)] text-[var(--bg)]">
+    <section className="relative overflow-hidden bg-[var(--feature-bg)] text-[var(--feature-ink)]">
       <div className="absolute inset-0">
         <Image
           src={media.agentsPitch}
@@ -34,7 +31,7 @@ export function AgentsPitch({
       <div className="container-x relative py-28 sm:py-40 grid grid-cols-12 gap-10">
         <div className="col-span-12 lg:col-span-7">
           <RevealOnView>
-            <div className="eyebrow mb-6 text-[var(--bg)]/65">
+            <div className="eyebrow mb-6 text-[var(--feature-ink)]/65">
               {dict.eyebrow}
             </div>
             <h2
@@ -45,21 +42,21 @@ export function AgentsPitch({
               <br />
               {dict.title[1]}
             </h2>
-            <p className="mt-8 max-w-[44ch] text-lg text-[var(--bg)]/65 leading-relaxed">
+            <p className="mt-8 max-w-[44ch] text-lg text-[var(--feature-ink)]/65 leading-relaxed">
               {dict.body}
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <PillButton
-                href={`/${locale}/apply`}
+                href={`/apply`}
                 variant="outline"
-                className="!bg-white !text-[var(--ink)] !border-white hover:!bg-transparent hover:!text-white"
+                className="!bg-white !text-[var(--feature-bg)] !border-white hover:!bg-transparent hover:!text-white"
               >
                 {dict.ctaPrimary}
               </PillButton>
               <PillButton
-                href={`/${locale}/about`}
+                href={`/about`}
                 variant="outline"
-                className="!border-white !text-white hover:!bg-white hover:!text-[var(--ink)]"
+                className="!border-white !text-white hover:!bg-white hover:!text-[var(--feature-bg)]"
               >
                 {dict.ctaSecondary}
               </PillButton>
@@ -76,7 +73,7 @@ export function AgentsPitch({
               <div className="text-3xl sm:text-4xl tracking-[-0.02em] font-semibold">
                 {stat.k}
               </div>
-              <div className="mt-2 text-sm text-[var(--bg)]/65">{stat.v}</div>
+              <div className="mt-2 text-sm text-[var(--feature-ink)]/65">{stat.v}</div>
             </RevealOnView>
           ))}
         </div>

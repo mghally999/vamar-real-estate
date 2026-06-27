@@ -16,9 +16,17 @@
   --line: rgba(22, 40, 66, 0.14);
   --radius-pill: 999px;
 
+  /* Feature panels — the navy "contrast" sections. These stay dark navy in
+     BOTH themes (in dark mode they sit slightly raised above the page bg), so
+     they never invert to a washed-out light block. */
+  --feature-bg: #162842;
+  --feature-ink: #f5f4ef;
+  --feature-soft: rgba(245, 244, 239, 0.74);
+  --feature-faint: rgba(245, 244, 239, 0.52);
+  --feature-line: rgba(245, 244, 239, 0.16);
+
   --font-display: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
-  --font-arabic: var(--font-arabic), "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
 
   --t-hero: clamp(3.5rem, 9vw, 8.5rem);
   --t-h1: clamp(2.5rem, 6vw, 5rem);
@@ -44,6 +52,13 @@ html[data-theme="dark"] {
   --pill: #ebe6dd;
   --pill-text: #162842;
   --line: rgba(235, 230, 221, 0.16);
+
+  /* Feature panels sit slightly raised above the darker page bg */
+  --feature-bg: #1a3656;
+  --feature-ink: #f3efe7;
+  --feature-soft: rgba(243, 239, 231, 0.76);
+  --feature-faint: rgba(243, 239, 231, 0.56);
+  --feature-line: rgba(243, 239, 231, 0.18);
 }
 
 @theme inline {
@@ -69,10 +84,13 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Kill any horizontal overflow (no white strip on the right). `clip` is used
+     instead of `hidden` so it doesn't break the sticky-scroll hero. */
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
-  overflow-x: hidden;
   font-feature-settings: "ss01", "cv11";
 }
 
@@ -214,11 +232,6 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* RTL: use Arabic font family when dir=rtl */
-html[dir="rtl"] body {
-  font-family: var(--font-arabic);
 }
 
 .no-scrollbar::-webkit-scrollbar {

@@ -4,29 +4,26 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { VamarLogo } from "@/components/primitives/VamarLogo";
-import { LanguageSwitcher } from "@/components/shell/LanguageSwitcher";
-import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { cn } from "@/lib/cn";
-import type { Locale } from "@/lib/i18n-config";
 import type { Dictionary } from "@/lib/getDictionary";
 
 type Dict = Dictionary["nav"];
 
-function navLinks(locale: Locale, dict: Dict) {
+function navLinks(dict: Dict) {
   return [
-    { href: `/${locale}/search`, label: dict.search },
-    { href: `/${locale}/agents`, label: dict.team },
-    { href: `/${locale}/paperwork`, label: dict.paperwork },
-    { href: `/${locale}/resources`, label: dict.resources },
-    { href: `/${locale}/about`, label: dict.about },
+    { href: `/search`, label: dict.search },
+    { href: `/agents`, label: dict.team },
+    { href: `/paperwork`, label: dict.paperwork },
+    { href: `/resources`, label: dict.resources },
+    { href: `/about`, label: dict.about },
   ];
 }
 
-export function Header({ locale, dict }: { locale: Locale; dict: Dict }) {
+export function Header({ dict }: { dict: Dict }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const links = navLinks(locale, dict);
+  const links = navLinks(dict);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -53,13 +50,13 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dict }) {
     >
       <div className="container-x flex h-16 items-center justify-between sm:h-20">
         <Link
-          href={`/${locale}`}
-          className="flex items-center"
+          href={"/"}
+          className="flex flex-1 items-center"
           aria-label="Vamar Real Estate — Home"
         >
           <VamarLogo
             withSubtitle={false}
-            className="h-7 sm:h-8 w-auto text-[#151717]"
+            className="text-[26px] sm:text-[30px] text-[var(--ink)]"
           />
         </Link>
 
@@ -78,17 +75,10 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dict }) {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
-          <ThemeToggle />
-          <LanguageSwitcher current={locale} />
-        </div>
-
-        <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <LanguageSwitcher current={locale} />
+        <div className="flex flex-1 items-center justify-end">
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)]"
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)]"
             aria-label={open ? dict.closeMenu : dict.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}

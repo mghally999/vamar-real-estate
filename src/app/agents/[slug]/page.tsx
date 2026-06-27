@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDictionary } from "@/lib/getDictionary";
-import { isLocale } from "@/lib/i18n-config";
 import { PillButton } from "@/components/primitives/PillButton";
 import { RevealOnView } from "@/components/primitives/RevealOnView";
 
@@ -16,11 +15,10 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = await getDictionary(locale);
+  const { slug } = await params;
+  const dict = await getDictionary();
   const member = dict.founders.members.find((m) => m.slug === slug);
   if (!member) return { title: "Team" };
   return {
@@ -32,11 +30,10 @@ export async function generateMetadata({
 export default async function FounderPage({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { locale, slug } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = await getDictionary(locale);
+  const { slug } = await params;
+  const dict = await getDictionary();
   const member = dict.founders.members.find((m) => m.slug === slug);
   if (!member) notFound();
 
@@ -46,7 +43,7 @@ export default async function FounderPage({
     <section className="pt-28 sm:pt-32 pb-24">
       <div className="container-x">
         <Link
-          href={`/${locale}/agents`}
+          href={`/agents`}
           className="text-sm text-[var(--ink-soft)] hover:text-[var(--ink)] inline-flex items-center gap-2"
         >
           &larr; {dict.team.back}
@@ -81,7 +78,7 @@ export default async function FounderPage({
               </blockquote>
 
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                <PillButton href={`/${locale}/apply`}>
+                <PillButton href={`/apply`}>
                   {dict.signoff.ctaPrimary}
                 </PillButton>
               </div>
@@ -100,7 +97,7 @@ export default async function FounderPage({
 
             <RevealOnView>
               <Link
-                href={`/${locale}/agents/${other.slug}`}
+                href={`/agents/${other.slug}`}
                 className="group block border-t border-[var(--line)] pt-8"
               >
                 <div className="flex items-center gap-4">
